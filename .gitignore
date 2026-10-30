@@ -1,0 +1,10 @@
+# downloaded datasets (fetched by the scripts); the joined CSV is committed
+data/*
+!data/noaa_weather_offutt_1949_1999.csv
+# Python and notebook caches
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# operating system files
+.DS_Store
+Thumbs.db
