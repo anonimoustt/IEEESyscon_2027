@@ -1,0 +1,15 @@
+# Q12. Failure path of MLP_Weather in year 21. Run it on ontology/failure_path_MLP_Weather_year21.owl.
+# From each degraded measurement of that year to its metric, the attribute it degrades for the Robustness debt,
+# and the documents that name that attribute. Works in the SPARQL Query tab of Protege 5.6.
+# Replace t:Robustness_Debt with t:Harmful_Output: only Security appears, because Safety did not degrade.
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?metric ?attribute ?document WHERE {
+  t:MLP_Weather c:achieves_metric ?m .
+  ?m c:measured_on t:Weather_Year_21 .
+  ?m t:of_metric_kind ?metric .
+  ?metric t:supports_attribute ?attribute .
+  t:Robustness_Debt t:requires_attribute ?attribute .
+  ?attribute t:named_in ?document .
+}
+ORDER BY ?attribute ?document

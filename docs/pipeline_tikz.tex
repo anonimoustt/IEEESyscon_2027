@@ -1,0 +1,14 @@
+% Pipeline figure (shared by the paper and the README image)
+\begin{tikzpicture}[font=\footnotesize, >={Stealth[length=2mm]},
+  stp/.style={draw, rounded corners=2pt, align=center, text width=28mm, minimum height=13mm, inner sep=2.5pt, execute at begin node={\hyphenpenalty=10000}},
+  lab/.style={font=\footnotesize\itshape, align=center}]
+\node[stp] (s1) at (0,0) {\textbf{1. Attributes and raw metrics}\\attributes from four documents, metrics for each};
+\node[stp] (s2) at (3.75,0) {\textbf{2. Debts}\\attributes that degrade together};
+\node[stp] (s3) at (7.5,0) {\textbf{3. Static ontology}\\ML models and this knowledge in OWL};
+\node[stp] (s4) at (11.25,0) {\textbf{4. Model extraction}\\information of one model};
+\node[stp, line width=1.1pt] (s5) at (15,0) {\textbf{5. Monitoring}\\several metrics read together over time};
+\foreach \a/\b in {s1/s2, s2/s3, s3/s4, s4/s5} \draw[->] (\a) -- (\b);
+\draw[->, line width=0.7pt] (s5.north) -- ++(0,0.45) -| node[lab, pos=0.25, above=1pt] {iterate: when no debt explains an observed degradation, revise steps 1 and 2} (s1.north);
+\draw (-1.5,-0.95) -- (5.25,-0.95) node[lab, midway, below=1pt] {build the knowledge once (Section III)};
+\draw (6.0,-0.95) -- (16.5,-0.95) node[lab, midway, below=1pt] {apply it to each model (Sections IV and V)};
+\end{tikzpicture}

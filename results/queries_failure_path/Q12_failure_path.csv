@@ -1,0 +1,7 @@
+metric,attribute,document
+Accuracy,Correctness,EASA_ML_Concept_Paper
+Accuracy,Correctness,EU_AI_Act
+Accuracy,Correctness,NIST_AI_RMF
+Attack_Success_Rate,Security,EASA_ML_Concept_Paper
+Attack_Success_Rate,Security,EU_AI_Act
+Attack_Success_Rate,Security,NIST_AI_RMF

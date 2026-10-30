@@ -1,0 +1,8 @@
+# Q4. Monitored metric kinds that do not apply to the algorithm of the model (closed world check).
+PREFIX c: <http://example.org/ml_core.owl#>                                    # core namespace
+PREFIX t: <http://example.org/ml_trust.owl#>                                   # extension namespace
+SELECT ?model ?metric ?algorithm WHERE {                                       # three output columns
+  ?model t:monitors_metric_kind ?metric ;                                      # every monitored metric kind
+         c:implements_algorithm ?algorithm .                                   # and the algorithm of its model
+  FILTER NOT EXISTS { ?metric c:applicable_to_algorithm_family ?algorithm . }  # kept only if it does not apply to that algorithm
+}                                                                              # end of the pattern

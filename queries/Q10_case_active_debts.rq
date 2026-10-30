@@ -1,0 +1,23 @@
+# Q10. Case studies: active debts (AND rule over the TDI, plus provenance) and their support (two or more = confirmed).
+PREFIX c: <http://example.org/ml_core.owl#>                                               # core namespace
+PREFIX t: <http://example.org/ml_trust.owl#>                                              # extension namespace
+SELECT ?model ?debt (COUNT(DISTINCT ?m) AS ?support) WHERE {                              # support counts distinct degradations
+  ?model a c:ML_Model_Instance ; c:implements_algorithm ?algorithm .                      # each model and its algorithm
+  ?debt a t:Trustworthiness_Debt .                                                        # each debt type
+  FILTER NOT EXISTS {                                                                     # AND rule: no required attribute may be missing
+    ?debt t:requires_attribute ?required .                                                # a required attribute
+    FILTER NOT EXISTS {                                                                   # that no degradation below supports
+      ?model c:achieves_metric ?m2 . ?m2 t:is_degraded true ; t:of_metric_kind ?k2 .      # a documented degradation of this model
+      ?k2 c:applicable_to_algorithm_family ?algorithm ; t:supports_attribute ?required .  # whose kind applies and supports the attribute
+    }                                                                                     # end of the inner test
+  }                                                                                       # end of the AND rule
+  FILTER NOT EXISTS {                                                                     # provenance: no required event may be missing
+    ?debt t:requires_provenance ?event .                                                  # the configuration class the debt needs
+    FILTER NOT EXISTS { ?model c:has_configuration ?f . ?f a ?event . }                   # missing if the model has no configuration of that class
+  }                                                                                       # end of the provenance test
+  ?model c:achieves_metric ?m . ?m t:is_degraded true ; t:of_metric_kind ?k .             # degradations of this model
+  ?k c:applicable_to_algorithm_family ?algorithm ; t:supports_attribute ?a .              # that apply and support some attribute
+  ?debt t:requires_attribute ?a .                                                         # of the debt indicator
+}                                                                                         # end of the pattern
+GROUP BY ?model ?debt                                                                     # one row per model and debt
+ORDER BY ?model ?debt                                                                     # sorted output

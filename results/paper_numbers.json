@@ -1,0 +1,726 @@
+{
+ "MLP_Weather": {
+  "train_accuracy_pct": 83.8,
+  "trainable_parameters": 161,
+  "inference_ms_per_year": 0.13,
+  "plan": [
+   "Accuracy",
+   "F1_Score",
+   "Accuracy_Variance",
+   "MMD",
+   "KS",
+   "Unsafe_Output_Rate",
+   "Attack_Success_Rate",
+   "Prediction_Flip_Rate",
+   "Explanation_Stability",
+   "Explanation_Fidelity"
+  ],
+  "inapplicable": [],
+  "thresholds_per_run": {
+   "200": {
+    "Accuracy": 0.7833,
+    "F1_Score": 0.5157,
+    "Accuracy_Variance": 0.07139501884756515,
+    "MMD": 0.0639100661185259,
+    "KS": 0.3087777777777778,
+    "Unsafe_Output_Rate": 0.5978260869565217,
+    "Attack_Success_Rate": 0.39444444444444443,
+    "Prediction_Flip_Rate": 0.08055555555555556,
+    "Explanation_Stability": 0.010965919220391585,
+    "Explanation_Fidelity": 0.3476214947478933
+   },
+   "400": {
+    "Accuracy": 0.7694,
+    "F1_Score": 0.525,
+    "Accuracy_Variance": 0.0715417040227685,
+    "MMD": 0.0699116396906736,
+    "KS": 0.32655555555555554,
+    "Unsafe_Output_Rate": 0.5934959349593496,
+    "Attack_Success_Rate": 0.4166666666666667,
+    "Prediction_Flip_Rate": 0.08611111111111111,
+    "Explanation_Stability": 0.011036692078672972,
+    "Explanation_Fidelity": 0.3527807902936774
+   },
+   "800": {
+    "Accuracy": 0.7722,
+    "F1_Score": 0.5192,
+    "Accuracy_Variance": 0.07692954100214489,
+    "MMD": 0.0708592402804078,
+    "KS": 0.3278888888888889,
+    "Unsafe_Output_Rate": 0.5974025974025974,
+    "Attack_Success_Rate": 0.4027777777777778,
+    "Prediction_Flip_Rate": 0.08333333333333333,
+    "Explanation_Stability": 0.011049756279278844,
+    "Explanation_Fidelity": 0.3672900102228886
+   },
+   "1600": {
+    "Accuracy": 0.7667,
+    "F1_Score": 0.5139,
+    "Accuracy_Variance": 0.07454137782188745,
+    "MMD": 0.07124261205333793,
+    "KS": 0.3214444444444444,
+    "Unsafe_Output_Rate": 0.594059405940594,
+    "Attack_Success_Rate": 0.4083333333333333,
+    "Prediction_Flip_Rate": 0.08333333333333333,
+    "Explanation_Stability": 0.011113831894295711,
+    "Explanation_Fidelity": 0.35771651269202354
+   }
+  },
+  "thresholds_avg": {
+   "Accuracy": 0.7729,
+   "F1_Score": 0.5185,
+   "Accuracy_Variance": 0.0736,
+   "MMD": 0.069,
+   "KS": 0.3212,
+   "Unsafe_Output_Rate": 0.5957,
+   "Attack_Success_Rate": 0.4056,
+   "Prediction_Flip_Rate": 0.0833,
+   "Explanation_Stability": 0.011,
+   "Explanation_Fidelity": 0.3564
+  },
+  "severe_avg": {
+   "MMD": 0.1131,
+   "KS": 0.3796
+  },
+  "validation_pct": {
+   "Accuracy": 6.2,
+   "F1_Score": 5.5,
+   "Accuracy_Variance": 6.0,
+   "MMD": 4.8,
+   "KS": 5.0,
+   "Unsafe_Output_Rate": 5.1,
+   "Attack_Success_Rate": 4.3,
+   "Prediction_Flip_Rate": 3.3,
+   "Explanation_Stability": 5.3,
+   "Explanation_Fidelity": 4.8
+  },
+  "validation_any_one_pct": 27.5,
+  "validation_any_two_pct": 11.6,
+  "validation_debt_pct": 2.9,
+  "validation_debt_n": 145,
+  "validation_debts": {
+   "Capability_Loss": {
+    "detected": 0,
+    "one_metric_only": 0
+   },
+   "Faithfulness": {
+    "detected": 17,
+    "one_metric_only": 260
+   },
+   "Harmful_Output": {
+    "detected": 3,
+    "one_metric_only": 0
+   },
+   "Operating_Envelope": {
+    "detected": 54,
+    "one_metric_only": 0
+   },
+   "Robustness_Debt": {
+    "detected": 101,
+    "one_metric_only": 0
+   },
+   "Source_Target_Mismatch": {
+    "detected": 0,
+    "one_metric_only": 0
+   }
+  },
+  "validation_ruled_out": {
+   "Capability_Loss": 396,
+   "Faithfulness": 0,
+   "Harmful_Output": 0,
+   "Operating_Envelope": 0,
+   "Robustness_Debt": 0,
+   "Source_Target_Mismatch": 48
+  },
+  "validation_severe_pct": 1.1,
+  "years_degraded": {
+   "Accuracy": 14,
+   "F1_Score": 7,
+   "Accuracy_Variance": 10,
+   "MMD": 26,
+   "KS": 38,
+   "Unsafe_Output_Rate": 10,
+   "Attack_Success_Rate": 3,
+   "Prediction_Flip_Rate": 2,
+   "Explanation_Stability": 0,
+   "Explanation_Fidelity": 10
+  },
+  "years_any_one": 39,
+  "years_any_two": 29,
+  "years_debt": 26,
+  "debt_years": [
+   13,
+   21,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37,
+   38,
+   39,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   49,
+   50
+  ],
+  "years_debts": {
+   "Capability_Loss": {
+    "detected": 0,
+    "one_metric_only": 0
+   },
+   "Faithfulness": {
+    "detected": 0,
+    "one_metric_only": 0
+   },
+   "Harmful_Output": {
+    "detected": 0,
+    "one_metric_only": 0
+   },
+   "Operating_Envelope": {
+    "detected": 25,
+    "one_metric_only": 5
+   },
+   "Robustness_Debt": {
+    "detected": 2,
+    "one_metric_only": 0
+   },
+   "Source_Target_Mismatch": {
+    "detected": 0,
+    "one_metric_only": 0
+   }
+  },
+  "years_ruled_out": {
+   "Capability_Loss": 20,
+   "Faithfulness": 0,
+   "Harmful_Output": 0,
+   "Operating_Envelope": 0,
+   "Robustness_Debt": 0,
+   "Source_Target_Mismatch": 0
+  },
+  "debt_years_accuracy_normal": 15,
+  "one_metric_only_years": [
+   11,
+   12,
+   14,
+   22,
+   46
+  ],
+  "ks_only_years": [
+   12,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   22,
+   46
+  ],
+  "decade_debts": {
+   "11-20": 1,
+   "21-30": 8,
+   "31-40": 10,
+   "41-50": 7
+  },
+  "mean_accuracy_pct": 78.6,
+  "example_years": {
+   "17": {
+    "values": {
+     "Accuracy": 0.8472,
+     "F1_Score": 0.7511,
+     "Accuracy_Variance": 0.021,
+     "MMD": 0.0379,
+     "KS": 0.3354,
+     "Unsafe_Output_Rate": 0.3413,
+     "Attack_Success_Rate": 0.3889,
+     "Prediction_Flip_Rate": 0.0611,
+     "Explanation_Stability": 0.0087,
+     "Explanation_Fidelity": 0.3138
+    },
+    "degraded": [
+     "KS"
+    ],
+    "attributes": [
+     "Reliability"
+    ],
+    "debts": {},
+    "ruled_out": ""
+   },
+   "21": {
+    "values": {
+     "Accuracy": 0.7639,
+     "F1_Score": 0.6047,
+     "Accuracy_Variance": 0.0201,
+     "MMD": 0.0357,
+     "KS": 0.3277,
+     "Unsafe_Output_Rate": 0.4298,
+     "Attack_Success_Rate": 0.425,
+     "Prediction_Flip_Rate": 0.0583,
+     "Explanation_Stability": 0.0083,
+     "Explanation_Fidelity": 0.3095
+    },
+    "degraded": [
+     "Accuracy",
+     "KS",
+     "Attack_Success_Rate"
+    ],
+    "attributes": [
+     "Correctness",
+     "Reliability",
+     "Security"
+    ],
+    "debts": {
+     "Robustness_Debt": "detected"
+    },
+    "ruled_out": "Capability_Loss"
+   },
+   "31": {
+    "values": {
+     "Accuracy": 0.8028,
+     "F1_Score": 0.5103,
+     "Accuracy_Variance": 0.0682,
+     "MMD": 0.1095,
+     "KS": 0.4811,
+     "Unsafe_Output_Rate": 0.5889,
+     "Attack_Success_Rate": 0.2694,
+     "Prediction_Flip_Rate": 0.0583,
+     "Explanation_Stability": 0.0058,
+     "Explanation_Fidelity": 0.4271
+    },
+    "degraded": [
+     "F1_Score",
+     "MMD",
+     "KS",
+     "Explanation_Fidelity"
+    ],
+    "attributes": [
+     "Correctness",
+     "Reliability",
+     "Resilience",
+     "Transparency_Interpretability"
+    ],
+    "debts": {
+     "Operating_Envelope": "detected"
+    },
+    "ruled_out": "Capability_Loss"
+   },
+   "37": {
+    "values": {
+     "Accuracy": 0.7222,
+     "F1_Score": 0.5283,
+     "Accuracy_Variance": 0.0832,
+     "MMD": 0.1021,
+     "KS": 0.4791,
+     "Unsafe_Output_Rate": 0.619,
+     "Attack_Success_Rate": 0.2917,
+     "Prediction_Flip_Rate": 0.0806,
+     "Explanation_Stability": 0.007,
+     "Explanation_Fidelity": 0.2668
+    },
+    "degraded": [
+     "Accuracy",
+     "Accuracy_Variance",
+     "MMD",
+     "KS",
+     "Unsafe_Output_Rate"
+    ],
+    "attributes": [
+     "Correctness",
+     "Reliability",
+     "Safety",
+     "Resilience"
+    ],
+    "debts": {
+     "Operating_Envelope": "detected"
+    },
+    "ruled_out": "Capability_Loss"
+   }
+  },
+  "validation_year_3": {
+   "values": {
+    "Accuracy": 0.85,
+    "F1_Score": 0.6932,
+    "Accuracy_Variance": 0.0343,
+    "MMD": 0.0219,
+    "KS": 0.2318,
+    "Unsafe_Output_Rate": 0.4135,
+    "Attack_Success_Rate": 0.2917,
+    "Prediction_Flip_Rate": 0.0389,
+    "Explanation_Stability": 0.0089,
+    "Explanation_Fidelity": 0.203
+   },
+   "degraded": []
+  }
+ },
+ "LR_Weather": {
+  "train_accuracy_pct": 80.2,
+  "trainable_parameters": 9,
+  "inference_ms_per_year": 0.11,
+  "plan": [
+   "Accuracy",
+   "F1_Score",
+   "Accuracy_Variance",
+   "MMD",
+   "KS",
+   "Unsafe_Output_Rate",
+   "Attack_Success_Rate",
+   "Prediction_Flip_Rate"
+  ],
+  "inapplicable": [
+   "Explanation_Stability",
+   "Explanation_Fidelity"
+  ],
+  "thresholds_per_run": {
+   "200": {
+    "Accuracy": 0.7639,
+    "F1_Score": 0.4714,
+    "Accuracy_Variance": 0.09221806835764346,
+    "MMD": 0.0639100661185259,
+    "KS": 0.3087777777777778,
+    "Unsafe_Output_Rate": 0.648936170212766,
+    "Attack_Success_Rate": 0.35833333333333334,
+    "Prediction_Flip_Rate": 0.08055555555555556
+   },
+   "400": {
+    "Accuracy": 0.7611,
+    "F1_Score": 0.4823,
+    "Accuracy_Variance": 0.08657174556213018,
+    "MMD": 0.0699116396906736,
+    "KS": 0.32655555555555554,
+    "Unsafe_Output_Rate": 0.6292134831460674,
+    "Attack_Success_Rate": 0.3638888888888889,
+    "Prediction_Flip_Rate": 0.08055555555555556
+   },
+   "800": {
+    "Accuracy": 0.7583,
+    "F1_Score": 0.4769,
+    "Accuracy_Variance": 0.08880493901322069,
+    "MMD": 0.0708592402804078,
+    "KS": 0.3278888888888889,
+    "Unsafe_Output_Rate": 0.6395348837209303,
+    "Attack_Success_Rate": 0.3611111111111111,
+    "Prediction_Flip_Rate": 0.07777777777777778
+   },
+   "1600": {
+    "Accuracy": 0.7556,
+    "F1_Score": 0.4752,
+    "Accuracy_Variance": 0.08967063156623598,
+    "MMD": 0.07124261205333793,
+    "KS": 0.3214444444444444,
+    "Unsafe_Output_Rate": 0.6428571428571429,
+    "Attack_Success_Rate": 0.3611111111111111,
+    "Prediction_Flip_Rate": 0.07777777777777778
+   }
+  },
+  "thresholds_avg": {
+   "Accuracy": 0.7597,
+   "F1_Score": 0.4765,
+   "Accuracy_Variance": 0.0893,
+   "MMD": 0.069,
+   "KS": 0.3212,
+   "Unsafe_Output_Rate": 0.6401,
+   "Attack_Success_Rate": 0.3611,
+   "Prediction_Flip_Rate": 0.0792
+  },
+  "severe_avg": {
+   "MMD": 0.1131,
+   "KS": 0.3796
+  },
+  "validation_pct": {
+   "Accuracy": 4.8,
+   "F1_Score": 5.0,
+   "Accuracy_Variance": 5.2,
+   "MMD": 4.8,
+   "KS": 5.0,
+   "Unsafe_Output_Rate": 5.3,
+   "Attack_Success_Rate": 4.3,
+   "Prediction_Flip_Rate": 3.8
+  },
+  "validation_any_one_pct": 20.3,
+  "validation_any_two_pct": 10.7,
+  "validation_debt_pct": 2.3,
+  "validation_debt_n": 113,
+  "validation_debts": {
+   "Capability_Loss": {
+    "detected": 0,
+    "one_metric_only": 0
+   },
+   "Faithfulness": {
+    "detected": 0,
+    "one_metric_only": 0
+   },
+   "Harmful_Output": {
+    "detected": 1,
+    "one_metric_only": 0
+   },
+   "Operating_Envelope": {
+    "detected": 54,
+    "one_metric_only": 0
+   },
+   "Robustness_Debt": {
+    "detected": 74,
+    "one_metric_only": 0
+   },
+   "Source_Target_Mismatch": {
+    "detected": 0,
+    "one_metric_only": 0
+   }
+  },
+  "validation_ruled_out": {
+   "Capability_Loss": 338,
+   "Faithfulness": 0,
+   "Harmful_Output": 0,
+   "Operating_Envelope": 0,
+   "Robustness_Debt": 0,
+   "Source_Target_Mismatch": 0
+  },
+  "validation_severe_pct": 1.1,
+  "years_degraded": {
+   "Accuracy": 20,
+   "F1_Score": 19,
+   "Accuracy_Variance": 18,
+   "MMD": 26,
+   "KS": 38,
+   "Unsafe_Output_Rate": 18,
+   "Attack_Success_Rate": 4,
+   "Prediction_Flip_Rate": 1
+  },
+  "years_any_one": 39,
+  "years_any_two": 34,
+  "years_debt": 28,
+  "debt_years": [
+   11,
+   13,
+   21,
+   22,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37,
+   38,
+   39,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   49,
+   50
+  ],
+  "years_debts": {
+   "Capability_Loss": {
+    "detected": 0,
+    "one_metric_only": 0
+   },
+   "Faithfulness": {
+    "detected": 0,
+    "one_metric_only": 0
+   },
+   "Harmful_Output": {
+    "detected": 0,
+    "one_metric_only": 0
+   },
+   "Operating_Envelope": {
+    "detected": 27,
+    "one_metric_only": 3
+   },
+   "Robustness_Debt": {
+    "detected": 3,
+    "one_metric_only": 0
+   },
+   "Source_Target_Mismatch": {
+    "detected": 0,
+    "one_metric_only": 0
+   }
+  },
+  "years_ruled_out": {
+   "Capability_Loss": 27,
+   "Faithfulness": 0,
+   "Harmful_Output": 0,
+   "Operating_Envelope": 0,
+   "Robustness_Debt": 0,
+   "Source_Target_Mismatch": 0
+  },
+  "debt_years_accuracy_normal": 12,
+  "one_metric_only_years": [
+   12,
+   14,
+   46
+  ],
+  "ks_only_years": [
+   12,
+   16,
+   18,
+   19
+  ],
+  "decade_debts": {
+   "11-20": 2,
+   "21-30": 9,
+   "31-40": 10,
+   "41-50": 7
+  },
+  "mean_accuracy_pct": 75.8,
+  "example_years": {
+   "17": {
+    "values": {
+     "Accuracy": 0.825,
+     "F1_Score": 0.6802,
+     "Accuracy_Variance": 0.0509,
+     "MMD": 0.0379,
+     "KS": 0.3354,
+     "Unsafe_Output_Rate": 0.4683,
+     "Attack_Success_Rate": 0.3611,
+     "Prediction_Flip_Rate": 0.0861
+    },
+    "degraded": [
+     "KS",
+     "Prediction_Flip_Rate"
+    ],
+    "attributes": [
+     "Reliability",
+     "Predictability"
+    ],
+    "debts": {},
+    "ruled_out": ""
+   },
+   "21": {
+    "values": {
+     "Accuracy": 0.7417,
+     "F1_Score": 0.5507,
+     "Accuracy_Variance": 0.0313,
+     "MMD": 0.0357,
+     "KS": 0.3277,
+     "Unsafe_Output_Rate": 0.5,
+     "Attack_Success_Rate": 0.375,
+     "Prediction_Flip_Rate": 0.0611
+    },
+    "degraded": [
+     "Accuracy",
+     "KS",
+     "Attack_Success_Rate"
+    ],
+    "attributes": [
+     "Correctness",
+     "Reliability",
+     "Security"
+    ],
+    "debts": {
+     "Robustness_Debt": "detected"
+    },
+    "ruled_out": "Capability_Loss"
+   },
+   "31": {
+    "values": {
+     "Accuracy": 0.7806,
+     "F1_Score": 0.4397,
+     "Accuracy_Variance": 0.0845,
+     "MMD": 0.1095,
+     "KS": 0.4811,
+     "Unsafe_Output_Rate": 0.6556,
+     "Attack_Success_Rate": 0.2,
+     "Prediction_Flip_Rate": 0.0306
+    },
+    "degraded": [
+     "F1_Score",
+     "MMD",
+     "KS",
+     "Unsafe_Output_Rate"
+    ],
+    "attributes": [
+     "Correctness",
+     "Reliability",
+     "Safety",
+     "Resilience"
+    ],
+    "debts": {
+     "Operating_Envelope": "detected"
+    },
+    "ruled_out": "Capability_Loss"
+   },
+   "37": {
+    "values": {
+     "Accuracy": 0.6667,
+     "F1_Score": 0.3478,
+     "Accuracy_Variance": 0.144,
+     "MMD": 0.1021,
+     "KS": 0.4791,
+     "Unsafe_Output_Rate": 0.7823,
+     "Attack_Success_Rate": 0.2028,
+     "Prediction_Flip_Rate": 0.0556
+    },
+    "degraded": [
+     "Accuracy",
+     "F1_Score",
+     "Accuracy_Variance",
+     "MMD",
+     "KS",
+     "Unsafe_Output_Rate"
+    ],
+    "attributes": [
+     "Correctness",
+     "Reliability",
+     "Safety",
+     "Resilience"
+    ],
+    "debts": {
+     "Operating_Envelope": "detected"
+    },
+    "ruled_out": "Capability_Loss"
+   }
+  },
+  "validation_year_3": {
+   "values": {
+    "Accuracy": 0.8111,
+    "F1_Score": 0.5641,
+    "Accuracy_Variance": 0.0744,
+    "MMD": 0.0219,
+    "KS": 0.2318,
+    "Unsafe_Output_Rate": 0.5769,
+    "Attack_Success_Rate": 0.2417,
+    "Prediction_Flip_Rate": 0.0361
+   },
+   "degraded": []
+  }
+ },
+ "debt_both": 26,
+ "debt_LR_only": [
+  11,
+  22
+ ],
+ "debt_MLP_only": [],
+ "data": {
+  "days": 18159,
+  "rain_days": 5698,
+  "rain_pct": 31.4,
+  "rain_pct_years_1_5": 30.4,
+  "rain_pct_years_41_50": 35.6,
+  "fixed_pressure_rows": [
+   3595,
+   3596
+  ]
+ }
+}

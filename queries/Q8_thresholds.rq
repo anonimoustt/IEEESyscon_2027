@@ -1,0 +1,9 @@
+# Q8. Thresholds of one model (written once after the resampled years, then read by the monitor).
+PREFIX t: <http://example.org/ml_trust.owl#>                                      # extension namespace
+SELECT ?metric ?tau ?tauSevere WHERE {                                            # three output columns
+  VALUES ?model { t:MLP_Weather }                                                 # the model; change this name for another model
+  ?model t:has_commissioning_profile ?profile .                                   # its commissioning profile
+  ?profile t:has_threshold_entry ?entry .                                         # each threshold entry of the profile
+  ?entry t:for_metric_kind ?metric ; t:has_tau ?tau ; t:has_tau_sev ?tauSevere .  # metric kind and both thresholds
+}                                                                                 # end of the pattern
+ORDER BY ?metric                                                                  # sorted output
