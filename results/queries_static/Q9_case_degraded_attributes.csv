@@ -1,0 +1,10 @@
+model,attribute,metric
+ALINA_on_Runways,Correctness,Accuracy
+ALINA_on_Runways,Reliability,MMD
+ALINA_on_Runways,Safety,Unsafe_Output_Rate
+AssistTaxi_Lane_Detector,Correctness,F1_Score
+AssistTaxi_Lane_Detector,Reliability,MMD
+Language_Model_Composite,Correctness,Performance_Drift_Rate
+Language_Model_Composite,Reliability,Performance_Drift_Rate
+Language_Model_Composite,Safety,Unsafe_Output_Rate
+Language_Model_Composite,Security,Attack_Success_Rate

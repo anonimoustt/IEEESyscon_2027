@@ -1,0 +1,17 @@
+# Q6. Detectable debts: debts whose every required attribute is observable for the model.
+PREFIX c: <http://example.org/ml_core.owl#>                                                                        # core namespace
+PREFIX t: <http://example.org/ml_trust.owl#>                                                                       # extension namespace
+SELECT ?model ?debt WHERE {                                                                                        # two output columns
+  ?model a c:ML_Model_Instance .                                                                                   # every model instance
+  FILTER EXISTS { ?model t:monitors_metric_kind ?any . }                                                           # that has a monitoring plan
+  ?debt a t:Trustworthiness_Debt .                                                                                 # every debt type
+  FILTER NOT EXISTS {                                                                                              # kept only if no required attribute below is unobservable
+    ?debt t:requires_attribute ?attribute .                                                                        # an attribute the debt requires
+    FILTER NOT EXISTS {                                                                                            # that no metric kind below supports
+      ?model t:monitors_metric_kind ?metric ; c:implements_algorithm ?algorithm .                                  # a monitored kind of this model
+      ?metric c:applicable_to_algorithm_family ?algorithm .                                                        # that applies to its algorithm
+      { ?metric t:supports_attribute ?attribute . } UNION { ?metric t:supports_attribute_if_severe ?attribute . }  # and supports the attribute, directly or under a severe shift
+    }                                                                                                              # end of the inner test
+  }                                                                                                                # end of the outer test
+}                                                                                                                  # end of the pattern
+ORDER BY ?model ?debt                                                                                              # sorted output

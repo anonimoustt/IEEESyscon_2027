@@ -1,0 +1,7 @@
+# Q7. Debt definitions: the TDI (required attributes) of each debt and the configuration class its provenance needs.
+PREFIX t: <http://example.org/ml_trust.owl#>                          # extension namespace
+SELECT ?debt ?attribute ?provenance WHERE {                           # three output columns
+  ?debt a t:Trustworthiness_Debt ; t:requires_attribute ?attribute .  # each debt and each attribute of its indicator
+  OPTIONAL { ?debt t:requires_provenance ?provenance . }              # the configuration class its provenance needs, if any
+}                                                                     # end of the pattern
+ORDER BY ?debt ?attribute                                             # sorted output

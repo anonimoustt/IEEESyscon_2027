@@ -1,0 +1,14 @@
+# Q5. Blind spots: attributes that no monitored and applicable metric kind supports, for every model with a plan.
+PREFIX c: <http://example.org/ml_core.owl#>                                                                      # core namespace
+PREFIX t: <http://example.org/ml_trust.owl#>                                                                     # extension namespace
+SELECT ?model ?attribute WHERE {                                                                                 # two output columns
+  ?model a c:ML_Model_Instance .                                                                                 # every model instance
+  FILTER EXISTS { ?model t:monitors_metric_kind ?any . }                                                         # that has a monitoring plan
+  ?attribute a t:Trustworthiness_Attribute .                                                                     # every attribute
+  FILTER NOT EXISTS {                                                                                            # kept only if no metric kind below supports it
+    ?model t:monitors_metric_kind ?metric ; c:implements_algorithm ?algorithm .                                  # a monitored kind of this model
+    ?metric c:applicable_to_algorithm_family ?algorithm .                                                        # that applies to its algorithm
+    { ?metric t:supports_attribute ?attribute . } UNION { ?metric t:supports_attribute_if_severe ?attribute . }  # and supports the attribute, directly or under a severe shift
+  }                                                                                                              # end of the inner test
+}                                                                                                                # end of the pattern
+ORDER BY ?model ?attribute                                                                                       # sorted output

@@ -1,0 +1,70 @@
+[
+ {
+  "query": "D1",
+  "manchester": "Raw_Metric_Kind and inverse (monitors_metric_kind) value MLP_Weather",
+  "instances": [
+   "Accuracy",
+   "Accuracy_Variance",
+   "Attack_Success_Rate",
+   "Explanation_Fidelity",
+   "Explanation_Stability",
+   "F1_Score",
+   "KS",
+   "MMD",
+   "Prediction_Flip_Rate",
+   "Unsafe_Output_Rate"
+  ]
+ },
+ {
+  "query": "D2",
+  "manchester": "Trustworthiness_Attribute and inverse (supports_attribute) some (Raw_Metric_Kind and inverse (monitors_metric_kind) value LR_Weather and applicable_to_algorithm_family value Logistic_Regression)",
+  "instances": [
+   "Correctness",
+   "Predictability",
+   "Reliability",
+   "Safety",
+   "Security"
+  ]
+ },
+ {
+  "query": "D3",
+  "manchester": "ML_Model_Instance and implements_algorithm some Deep_Learning_Algorithm",
+  "instances": [
+   "AssistTaxi_Lane_Detector",
+   "Language_Model_Composite",
+   "MLP_Weather"
+  ]
+ },
+ {
+  "query": "D4",
+  "manchester": "ML_Model_Instance and has_configuration some Fine_Tuning_Configuration",
+  "instances": [
+   "AssistTaxi_Lane_Detector",
+   "Language_Model_Composite"
+  ]
+ },
+ {
+  "query": "D5",
+  "manchester": "ML_Model_Instance and has_configuration some Transfer_Configuration",
+  "instances": [
+   "ALINA_on_Runways",
+   "AssistTaxi_Lane_Detector"
+  ]
+ },
+ {
+  "query": "D6",
+  "manchester": "Trustworthiness_Debt and requires_attribute value Correctness",
+  "instances": [
+   "Capability_Loss",
+   "Robustness_Debt"
+  ]
+ },
+ {
+  "query": "D7",
+  "manchester": "ML_Model_Instance and achieves_metric some (is_degraded value true and of_metric_kind value MMD)",
+  "instances": [
+   "ALINA_on_Runways",
+   "AssistTaxi_Lane_Detector"
+  ]
+ }
+]

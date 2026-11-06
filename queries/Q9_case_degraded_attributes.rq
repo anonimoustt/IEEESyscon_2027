@@ -1,0 +1,10 @@
+# Q9. Case studies: attributes degraded by the documented degradations of each model (OR rule).
+PREFIX c: <http://example.org/ml_core.owl#>                          # core namespace
+PREFIX t: <http://example.org/ml_trust.owl#>                         # extension namespace
+SELECT DISTINCT ?model ?attribute ?metric WHERE {                    # three output columns, no duplicates
+  ?model c:achieves_metric ?m ; c:implements_algorithm ?algorithm .  # each measurement of each model, and its algorithm
+  ?m t:is_degraded true ; t:of_metric_kind ?metric .                 # documented as degraded, with its metric kind
+  ?metric c:applicable_to_algorithm_family ?algorithm ;              # the kind applies to the algorithm
+          t:supports_attribute ?attribute .                          # and supports this attribute (OR rule)
+}                                                                    # end of the pattern
+ORDER BY ?model ?attribute                                           # sorted output
