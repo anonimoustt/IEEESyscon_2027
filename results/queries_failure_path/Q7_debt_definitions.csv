@@ -1,0 +1,14 @@
+debt,attribute,provenance
+Capability_Loss,Correctness,Fine_Tuning_Configuration
+Capability_Loss,Reliability,Fine_Tuning_Configuration
+Faithfulness,Predictability,
+Faithfulness,Transparency_Interpretability,
+Harmful_Output,Safety,
+Harmful_Output,Security,
+Operating_Envelope,Reliability,
+Operating_Envelope,Resilience,
+Robustness_Debt,Correctness,
+Robustness_Debt,Security,
+Source_Target_Mismatch,Predictability,Transfer_Configuration
+Source_Target_Mismatch,Reliability,Transfer_Configuration
+Source_Target_Mismatch,Transparency_Interpretability,Transfer_Configuration

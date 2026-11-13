@@ -1,0 +1,216 @@
+THE TWELVE QUERIES OF THE PAPER, READY TO PASTE INTO PROTEGE
+
+How to run them:
+1. Open Protege 5.6 and choose File, Open, and ontology/failure_path_MLP_Weather_year21.owl.
+   This one file holds the whole ontology, the thresholds, and the record of year 21, so all twelve queries run on it.
+2. Protege opens with the DL Query tab, which answers class questions only. Add the SPARQL tab:
+   Window, Tabs, SPARQL Query.
+3. In the SPARQL Query tab, delete the example text, paste one query below (from PREFIX to the last line), and click Execute.
+
+Every query below was tested in the SPARQL Query tab of Protege 5.6.7 on that file.
+Q1 to Q8 ask about MLP_Weather; replace t:MLP_Weather with t:LR_Weather to ask about the logistic regression.
+Q9 to Q11 also list MLP_Weather, because the file holds its record of year 21.
+
+====================================================================================================
+Q1. Which algorithm, configurations, and data contexts does a model have?
+====================================================================================================
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?relation ?value ?type WHERE {
+  VALUES ?model { t:MLP_Weather }
+  { ?model c:implements_algorithm ?value . BIND("implements_algorithm" AS ?relation) }
+  UNION { ?model c:has_configuration ?value . BIND("has_configuration" AS ?relation) }
+  UNION { ?model c:suited_for_context ?value . BIND("suited_for_context" AS ?relation) }
+  UNION { ?model c:operates_on_context ?value . BIND("operates_on_context" AS ?relation) }
+  ?value rdf:type ?type .
+  FILTER (?type != owl:NamedIndividual)
+}
+ORDER BY ?relation ?value
+
+====================================================================================================
+Q2. Which settings does the monitor need to rebuild the model: hyperparameters, training, normal, and monitored periods, task, size, and threshold settings?
+====================================================================================================
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?algorithm ?seed ?hiddenUnits ?maxIter ?trainFrom ?trainTo ?commFrom ?commTo ?opFrom ?opTo
+       ?task ?parameters ?checkDays ?blockDays ?validationYears ?epsilon ?pct ?pctSevere ?sigma ?refSize
+       (GROUP_CONCAT(STR(?size); separator=",") AS ?resampleSizes) WHERE {
+  VALUES ?model { t:MLP_Weather }
+  ?model c:implements_algorithm ?algorithm ; c:has_configuration ?hyp, ?trn ;
+         c:operates_on_context ?op ; t:has_commissioning_profile ?prof ;
+         t:has_task ?task ; t:has_trainable_parameters ?parameters .
+  ?hyp a c:Hyperparameter_Configuration ; t:has_random_seed ?seed ; t:has_max_iterations ?maxIter .
+  OPTIONAL { ?hyp t:has_hidden_units ?hiddenUnits . }
+  ?trn a c:Training_Configuration ; t:has_start_year ?trainFrom ; t:has_end_year ?trainTo .
+  ?op t:has_start_year ?opFrom ; t:has_end_year ?opTo .
+  ?prof t:commissioned_on ?cm ; t:has_check_length_days ?checkDays ; t:has_block_length_days ?blockDays ;
+        t:has_resample_size ?size ; t:has_validation_years ?validationYears ; t:has_attack_epsilon ?epsilon ;
+        t:has_percentile ?pct ; t:has_severe_percentile ?pctSevere ;
+        t:has_noise_sigma ?sigma ; t:has_reference_size ?refSize .
+  ?cm t:has_start_year ?commFrom ; t:has_end_year ?commTo .
+}
+GROUP BY ?algorithm ?seed ?hiddenUnits ?maxIter ?trainFrom ?trainTo ?commFrom ?commTo ?opFrom ?opTo
+         ?task ?parameters ?checkDays ?blockDays ?validationYears ?epsilon ?pct ?pctSevere ?sigma ?refSize
+
+====================================================================================================
+Q3. Which metrics does the model watch that apply to its algorithm, and which attributes does each one measure?
+====================================================================================================
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?metric ?attribute ?link WHERE {
+  VALUES ?model { t:MLP_Weather }
+  ?model t:monitors_metric_kind ?metric ;
+         c:implements_algorithm ?algorithm .
+  ?metric c:applicable_to_algorithm_family ?algorithm .
+  { ?metric t:supports_attribute ?attribute . BIND("direct" AS ?link) }
+  UNION
+  { ?metric t:supports_attribute_if_severe ?attribute . BIND("severe shift only" AS ?link) }
+}
+ORDER BY ?metric ?attribute
+
+====================================================================================================
+Q4. Which watched metrics do not apply to its algorithm?
+====================================================================================================
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?model ?metric ?algorithm WHERE {
+  ?model t:monitors_metric_kind ?metric ;
+         c:implements_algorithm ?algorithm .
+  FILTER NOT EXISTS { ?metric c:applicable_to_algorithm_family ?algorithm . }
+}
+
+====================================================================================================
+Q5. Which attributes does no applicable metric measure? These are the blind spots.
+====================================================================================================
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?model ?attribute WHERE {
+  ?model a c:ML_Model_Instance .
+  FILTER EXISTS { ?model t:monitors_metric_kind ?any . }
+  ?attribute a t:Trustworthiness_Attribute .
+  FILTER NOT EXISTS {
+    ?model t:monitors_metric_kind ?metric ; c:implements_algorithm ?algorithm .
+    ?metric c:applicable_to_algorithm_family ?algorithm .
+    { ?metric t:supports_attribute ?attribute . } UNION { ?metric t:supports_attribute_if_severe ?attribute . }
+  }
+}
+ORDER BY ?model ?attribute
+
+====================================================================================================
+Q6. Which debts have all their attributes visible to the model?
+====================================================================================================
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?model ?debt WHERE {
+  ?model a c:ML_Model_Instance .
+  FILTER EXISTS { ?model t:monitors_metric_kind ?any . }
+  ?debt a t:Trustworthiness_Debt .
+  FILTER NOT EXISTS {
+    ?debt t:requires_attribute ?attribute .
+    FILTER NOT EXISTS {
+      ?model t:monitors_metric_kind ?metric ; c:implements_algorithm ?algorithm .
+      ?metric c:applicable_to_algorithm_family ?algorithm .
+      { ?metric t:supports_attribute ?attribute . } UNION { ?metric t:supports_attribute_if_severe ?attribute . }
+    }
+  }
+}
+ORDER BY ?model ?debt
+
+====================================================================================================
+Q7. Which attributes and which history event does each debt need?
+====================================================================================================
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?debt ?attribute ?provenance WHERE {
+  ?debt a t:Trustworthiness_Debt ; t:requires_attribute ?attribute .
+  OPTIONAL { ?debt t:requires_provenance ?provenance . }
+}
+ORDER BY ?debt ?attribute
+
+====================================================================================================
+Q8. Which thresholds does the model have?
+====================================================================================================
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?metric ?tau ?tauSevere WHERE {
+  VALUES ?model { t:MLP_Weather }
+  ?model t:has_commissioning_profile ?profile .
+  ?profile t:has_threshold_entry ?entry .
+  ?entry t:for_metric_kind ?metric ; t:has_tau ?tau ; t:has_tau_sev ?tauSevere .
+}
+ORDER BY ?metric
+
+====================================================================================================
+Q9. Which attributes do the stored failures of each documented system degrade?
+====================================================================================================
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT DISTINCT ?model ?attribute ?metric WHERE {
+  ?model c:achieves_metric ?m ; c:implements_algorithm ?algorithm .
+  ?m t:is_degraded true ; t:of_metric_kind ?metric .
+  ?metric c:applicable_to_algorithm_family ?algorithm ;
+          t:supports_attribute ?attribute .
+}
+ORDER BY ?model ?attribute
+
+====================================================================================================
+Q10. Which debts of a documented system have all their attributes degraded and a history that allows them, and how many different metrics support each?
+====================================================================================================
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?model ?debt (COUNT(DISTINCT ?m) AS ?support) WHERE {
+  ?model a c:ML_Model_Instance ; c:implements_algorithm ?algorithm .
+  ?debt a t:Trustworthiness_Debt .
+  FILTER NOT EXISTS {
+    ?debt t:requires_attribute ?required .
+    FILTER NOT EXISTS {
+      ?model c:achieves_metric ?m2 . ?m2 t:is_degraded true ; t:of_metric_kind ?k2 .
+      ?k2 c:applicable_to_algorithm_family ?algorithm ; t:supports_attribute ?required .
+    }
+  }
+  FILTER NOT EXISTS {
+    ?debt t:requires_provenance ?event .
+    FILTER NOT EXISTS { ?model c:has_configuration ?f . ?f a ?event . }
+  }
+  ?model c:achieves_metric ?m . ?m t:is_degraded true ; t:of_metric_kind ?k .
+  ?k c:applicable_to_algorithm_family ?algorithm ; t:supports_attribute ?a .
+  ?debt t:requires_attribute ?a .
+}
+GROUP BY ?model ?debt
+ORDER BY ?model ?debt
+
+====================================================================================================
+Q11. Which debts have all their attributes degraded but lack the history event they need?
+====================================================================================================
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?model ?debt WHERE {
+  ?model a c:ML_Model_Instance ; c:implements_algorithm ?algorithm .
+  ?debt t:requires_provenance ?event .
+  FILTER EXISTS { ?model c:achieves_metric ?any . ?any t:is_degraded true . }
+  FILTER NOT EXISTS {
+    ?debt t:requires_attribute ?required .
+    FILTER NOT EXISTS {
+      ?model c:achieves_metric ?m . ?m t:is_degraded true ; t:of_metric_kind ?k .
+      ?k c:applicable_to_algorithm_family ?algorithm ; t:supports_attribute ?required .
+    }
+  }
+  FILTER NOT EXISTS { ?model c:has_configuration ?f . ?f a ?event . }
+}
+
+====================================================================================================
+Q12. For one monitored year, which degraded metric reaches which attribute and which debt? (Fig. 3 of the paper)
+====================================================================================================
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?year ?model ?metric ?attribute ?debt WHERE {
+  ?model c:achieves_metric ?m .
+  ?m c:measured_on ?year .
+  ?m t:is_degraded true .
+  ?m t:of_metric_kind ?metric .
+  ?metric t:supports_attribute ?attribute .
+  ?debt t:requires_attribute ?attribute .
+  FILTER (?year = t:Weather_Year_21 && ?debt = t:Robustness_Debt)
+}
+ORDER BY ?attribute
+

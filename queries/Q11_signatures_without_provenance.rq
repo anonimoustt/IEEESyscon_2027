@@ -1,0 +1,16 @@
+# Q11. Case studies: debts whose attributes are all degraded but whose provenance event is not on record.
+PREFIX c: <http://example.org/ml_core.owl#>                                              # core namespace
+PREFIX t: <http://example.org/ml_trust.owl#>                                             # extension namespace
+SELECT ?model ?debt WHERE {                                                              # two output columns
+  ?model a c:ML_Model_Instance ; c:implements_algorithm ?algorithm .                     # each model and its algorithm
+  ?debt t:requires_provenance ?event .                                                   # each debt that needs a provenance event
+  FILTER EXISTS { ?model c:achieves_metric ?any . ?any t:is_degraded true . }            # the model has documented degradations
+  FILTER NOT EXISTS {                                                                    # every required attribute is degraded
+    ?debt t:requires_attribute ?required .                                               # a required attribute
+    FILTER NOT EXISTS {                                                                  # that no degradation below supports
+      ?model c:achieves_metric ?m . ?m t:is_degraded true ; t:of_metric_kind ?k .        # a documented degradation of this model
+      ?k c:applicable_to_algorithm_family ?algorithm ; t:supports_attribute ?required .  # whose kind applies and supports the attribute
+    }                                                                                    # end of the inner test
+  }                                                                                      # end of the indicator test
+  FILTER NOT EXISTS { ?model c:has_configuration ?f . ?f a ?event . }                    # but no configuration of the required class is on record
+}                                                                                        # end of the pattern

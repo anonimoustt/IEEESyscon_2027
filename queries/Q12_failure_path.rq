@@ -1,0 +1,17 @@
+# Q12. Failure path of year 21 as a pipeline. Run it on ontology/failure_path_MLP_Weather_year21.owl.
+# Each row is one path: monitored year, model, degraded metric, the attribute it degrades, and the debt.
+# Two rows with two different metrics degrade both attributes of the Robustness debt, so the debt is detected.
+# Works in the SPARQL Query tab of Protege 5.6. Replace t:Robustness_Debt with t:Harmful_Output:
+# only the Security row remains, because Safety did not degrade in year 21.
+PREFIX c: <http://example.org/ml_core.owl#>
+PREFIX t: <http://example.org/ml_trust.owl#>
+SELECT ?year ?model ?metric ?attribute ?debt WHERE {
+  ?model c:achieves_metric ?m .
+  ?m c:measured_on ?year .
+  ?m t:is_degraded true .
+  ?m t:of_metric_kind ?metric .
+  ?metric t:supports_attribute ?attribute .
+  ?debt t:requires_attribute ?attribute .
+  FILTER (?year = t:Weather_Year_21 && ?debt = t:Robustness_Debt)
+}
+ORDER BY ?attribute

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:c="http://example.org/ml_core.owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:t="http://example.org/ml_trust.owl#"
+>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Year21_Accuracy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <c:measured_on rdf:resource="http://example.org/ml_trust.owl#Weather_Year_21"/>
+    <t:of_metric_kind rdf:resource="http://example.org/ml_trust.owl#Accuracy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Accuracy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Correctness"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Year21_Attack_Success_Rate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <c:measured_on rdf:resource="http://example.org/ml_trust.owl#Weather_Year_21"/>
+    <t:of_metric_kind rdf:resource="http://example.org/ml_trust.owl#Attack_Success_Rate"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <c:achieves_metric rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Year21_Accuracy"/>
+    <c:achieves_metric rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Year21_Attack_Success_Rate"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#requires_attribute">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#of_metric_kind">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Robustness_Debt">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Correctness"/>
+    <t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Security"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Attack_Success_Rate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Security"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/trustworthiness_debt_chain.owl">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Correctness">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#supports_attribute">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#achieves_metric">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Weather_Year_21">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#measured_on">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Security">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+</rdf:RDF>

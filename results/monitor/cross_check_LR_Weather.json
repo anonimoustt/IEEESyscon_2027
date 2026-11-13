@@ -1,0 +1,7 @@
+{
+ "model": "LR_Weather",
+ "largest_relative_gap": 5.84320871467686e-14,
+ "decision_mismatches": 0,
+ "years_compared": 5040,
+ "values_compared": 40320
+}

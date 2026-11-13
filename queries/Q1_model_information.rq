@@ -1,0 +1,15 @@
+# Q1. Model information: algorithm and family, configurations and their type, and contexts of one model instance.
+PREFIX c: <http://example.org/ml_core.owl#>                                                 # core namespace
+PREFIX t: <http://example.org/ml_trust.owl#>                                                # extension namespace
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>                                   # RDF vocabulary
+PREFIX owl: <http://www.w3.org/2002/07/owl#>                                                # OWL vocabulary
+SELECT ?relation ?value ?type WHERE {                                                       # three output columns
+  VALUES ?model { t:MLP_Weather }                                                           # the model to describe; change this name for another model
+  { ?model c:implements_algorithm ?value . BIND("implements_algorithm" AS ?relation) }      # its algorithm
+  UNION { ?model c:has_configuration ?value . BIND("has_configuration" AS ?relation) }      # its configurations
+  UNION { ?model c:suited_for_context ?value . BIND("suited_for_context" AS ?relation) }    # contexts it was trained and tested for
+  UNION { ?model c:operates_on_context ?value . BIND("operates_on_context" AS ?relation) }  # context it operates on now
+  ?value rdf:type ?type .                                                                   # class of each value
+  FILTER (?type != owl:NamedIndividual)                                                     # skip the generic OWL type
+}                                                                                           # end of the pattern
+ORDER BY ?relation ?value                                                                   # sorted output

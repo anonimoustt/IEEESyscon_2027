@@ -1,0 +1,1178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ml_c="http://example.org/ml_core.owl#"
+   xmlns:ml_t="http://example.org/ml_trust.owl#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#ALINA_Taxiway_to_Runway_Transfer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Transfer_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#NIST_AI_RMF">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Source_Document"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NIST AI Risk Management Framework, AI RMF 1.0 (nist2023rmf)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Multilayer_Perceptron">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Deep_Learning_Algorithm"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Supervised_Algorithm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Ensemble_Algorithm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Algorithm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Language_Model_Composite">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <ml_c:implements_algorithm rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:operates_on_context rdf:resource="http://example.org/ml_trust.owl#Retrieved_Web_Content"/>
+    <ml_c:operates_on_context rdf:resource="http://example.org/ml_trust.owl#Fixed_Benchmark_Tasks"/>
+    <ml_c:has_configuration rdf:resource="http://example.org/ml_trust.owl#Benign_Fine_Tuning"/>
+    <ml_c:achieves_metric rdf:resource="http://example.org/ml_trust.owl#LLM_Harmful_Responses"/>
+    <ml_c:achieves_metric rdf:resource="http://example.org/ml_trust.owl#LLM_Prompt_Injection"/>
+    <ml_c:achieves_metric rdf:resource="http://example.org/ml_trust.owl#LLM_Version_Drift"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#has_configuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdfs:range rdf:resource="http://example.org/ml_core.owl#ML_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_resample_size">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather_Training">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Training_Configuration"/>
+    <ml_t:has_start_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ml_t:has_start_year>
+    <ml_t:has_end_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</ml_t:has_end_year>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Security">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#NIST_AI_RMF"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#EASA_ML_Concept_Paper"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#EU_AI_Act"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Named in: NIST secure; EU AI Act cybersecurity (Art. 15); EASA security assessment</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Explanation_Fidelity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Transparency_Interpretability"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3df9505a61c345ad98525b4b3fbd1c95">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="Nb46353cd212f4e149b8f8692999e52c5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Profile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <ml_t:commissioned_on rdf:resource="http://example.org/ml_trust.owl#Weather_Years_6_to_10"/>
+    <ml_t:has_percentile rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">95</ml_t:has_percentile>
+    <ml_t:has_severe_percentile rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">99</ml_t:has_severe_percentile>
+    <ml_t:has_resample_size rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">200</ml_t:has_resample_size>
+    <ml_t:has_resample_size rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">400</ml_t:has_resample_size>
+    <ml_t:has_resample_size rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">800</ml_t:has_resample_size>
+    <ml_t:has_resample_size rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1600</ml_t:has_resample_size>
+    <ml_t:has_validation_years rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5000</ml_t:has_validation_years>
+    <ml_t:has_attack_epsilon rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</ml_t:has_attack_epsilon>
+    <ml_t:has_check_length_days rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">360</ml_t:has_check_length_days>
+    <ml_t:has_block_length_days rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</ml_t:has_block_length_days>
+    <ml_t:has_noise_sigma rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</ml_t:has_noise_sigma>
+    <ml_t:has_reference_size rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</ml_t:has_reference_size>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Accuracy_Variance_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_KS_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_MMD_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Attack_Success_Rate_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Explanation_Fidelity_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Explanation_Stability_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_F1_Score_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Unsafe_Output_Rate_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Accuracy_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Prediction_Flip_Rate_Threshold"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Fault_Detection_Coverage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Safety"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_reference_size">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Capability_Loss">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Debt"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Correctness"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_t:requires_provenance rdf:resource="http://example.org/ml_trust.owl#Fine_Tuning_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <ml_c:implements_algorithm rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:has_configuration rdf:resource="http://example.org/ml_trust.owl#LR_Weather_Hyperparameters"/>
+    <ml_c:has_configuration rdf:resource="http://example.org/ml_trust.owl#LR_Weather_Training"/>
+    <ml_c:suited_for_context rdf:resource="http://example.org/ml_trust.owl#NOAA_Daily_Weather_Records"/>
+    <ml_c:suited_for_context rdf:resource="http://example.org/ml_trust.owl#Rain_Prediction"/>
+    <ml_c:suited_for_context rdf:resource="http://example.org/ml_trust.owl#Weather_Years_6_to_10"/>
+    <ml_c:operates_on_context rdf:resource="http://example.org/ml_trust.owl#Weather_Years_11_to_50"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Accuracy"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#F1_Score"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Accuracy_Variance"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#MMD"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#KS"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Unsafe_Output_Rate"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Attack_Success_Rate"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Prediction_Flip_Rate"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Explanation_Stability"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Explanation_Fidelity"/>
+    <ml_t:has_commissioning_profile rdf:resource="http://example.org/ml_trust.owl#LR_Weather_Profile"/>
+    <ml_t:has_task rdf:datatype="http://www.w3.org/2001/XMLSchema#string">binary classification: rain or no rain</ml_t:has_task>
+    <ml_t:has_trainable_parameters rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</ml_t:has_trainable_parameters>
+    <ml_t:has_inference_time_ms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.113</ml_t:has_inference_time_ms>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#commissioned_on">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdfs:range rdf:resource="http://example.org/ml_core.owl#ML_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Failure_Rate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_tau">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Trustworthiness_Debt">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_end_year">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#achieves_metric">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdfs:range rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Fixed_Benchmark_Tasks">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Problem_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Availability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MMD">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_t:supports_attribute_if_severe rdf:resource="http://example.org/ml_trust.owl#Resilience"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Explanation_Stability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Predictability"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Transparency_Interpretability"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stability of gradient saliency maps under small input noise.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather_Accuracy_Threshold">
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.2402777777777778</ml_t:has_tau>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Accuracy"/>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.25416666666666665</ml_t:has_tau_sev>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#measured_on">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+    <rdfs:range rdf:resource="http://example.org/ml_core.owl#ML_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#requires_attribute">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Debt"/>
+    <rdfs:range rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#AssistTaxi_Road_Taxiway_Shift">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Shift_Metric"/>
+    <ml_t:of_metric_kind rdf:resource="http://example.org/ml_trust.owl#MMD"/>
+    <ml_c:measured_on rdf:resource="http://example.org/ml_trust.owl#Taxiway_Imagery_AssistTaxi"/>
+    <ml_t:is_degraded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ml_t:is_degraded>
+    <ml_t:reported_in rdf:datatype="http://www.w3.org/2001/XMLSchema#string">khan2025adapt</ml_t:reported_in>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Latency_Jitter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Predictability"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#ML_Model_Instance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Silent_Data_Corruption_Rate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Safety"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#ALINA_on_Runways">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <ml_c:implements_algorithm rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+    <ml_c:suited_for_context rdf:resource="http://example.org/ml_trust.owl#Taxiway_Imagery"/>
+    <ml_c:operates_on_context rdf:resource="http://example.org/ml_trust.owl#Runway_Imagery"/>
+    <ml_c:has_configuration rdf:resource="http://example.org/ml_trust.owl#ALINA_Taxiway_to_Runway_Transfer"/>
+    <ml_c:has_configuration rdf:resource="http://example.org/ml_trust.owl#ALINA_Adjusted_Color_Sensitivity"/>
+    <ml_c:achieves_metric rdf:resource="http://example.org/ml_trust.owl#ALINA_Runway_Mislabeling"/>
+    <ml_c:achieves_metric rdf:resource="http://example.org/ml_trust.owl#ALINA_Runway_Missed_Line"/>
+    <ml_c:achieves_metric rdf:resource="http://example.org/ml_trust.owl#ALINA_Taxiway_Runway_Shift"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Transfer_Configuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#Training_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#ALINA_Runway_Missed_Line">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+    <ml_t:of_metric_kind rdf:resource="http://example.org/ml_trust.owl#Unsafe_Output_Rate"/>
+    <ml_c:measured_on rdf:resource="http://example.org/ml_trust.owl#Runway_Imagery"/>
+    <ml_t:is_degraded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ml_t:is_degraded>
+    <ml_t:reported_in rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ganeriwala2025runway</ml_t:reported_in>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_MMD_Threshold">
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0689808895357363</ml_t:has_tau>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#MMD"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.11308261469792971</ml_t:has_tau_sev>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Attack_Detection_Rate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Security"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Harmful_Output">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Debt"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Safety"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Security"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <ml_c:implements_algorithm rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:has_configuration rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Hyperparameters"/>
+    <ml_c:has_configuration rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Training"/>
+    <ml_c:suited_for_context rdf:resource="http://example.org/ml_trust.owl#NOAA_Daily_Weather_Records"/>
+    <ml_c:suited_for_context rdf:resource="http://example.org/ml_trust.owl#Rain_Prediction"/>
+    <ml_c:suited_for_context rdf:resource="http://example.org/ml_trust.owl#Weather_Years_6_to_10"/>
+    <ml_c:operates_on_context rdf:resource="http://example.org/ml_trust.owl#Weather_Years_11_to_50"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Accuracy"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#F1_Score"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Accuracy_Variance"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#MMD"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#KS"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Unsafe_Output_Rate"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Attack_Success_Rate"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Prediction_Flip_Rate"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Explanation_Stability"/>
+    <ml_t:monitors_metric_kind rdf:resource="http://example.org/ml_trust.owl#Explanation_Fidelity"/>
+    <ml_t:has_commissioning_profile rdf:resource="http://example.org/ml_trust.owl#MLP_Weather_Profile"/>
+    <ml_t:has_task rdf:datatype="http://www.w3.org/2001/XMLSchema#string">binary classification: rain or no rain</ml_t:has_task>
+    <ml_t:has_trainable_parameters rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">161</ml_t:has_trainable_parameters>
+    <ml_t:has_inference_time_ms rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.128</ml_t:has_inference_time_ms>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Resilience">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#NIST_AI_RMF"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#EU_AI_Act"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Named in: NIST resilient; EU AI Act resilience to errors and faults (Art. 15)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Accuracy_Variance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Correctness"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather_F1_Score_Threshold">
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5633020929629089</ml_t:has_tau_sev>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#F1_Score"/>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5235328308374443</ml_t:has_tau>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LLM_Harmful_Responses">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+    <ml_t:of_metric_kind rdf:resource="http://example.org/ml_trust.owl#Unsafe_Output_Rate"/>
+    <ml_c:measured_on rdf:resource="http://example.org/ml_trust.owl#Harmful_Instruction_Prompts"/>
+    <ml_t:is_degraded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ml_t:is_degraded>
+    <ml_t:reported_in rdf:datatype="http://www.w3.org/2001/XMLSchema#string">qi2024fine</ml_t:reported_in>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Intersection_over_Union">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Correctness"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#F1_Score">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Correctness"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#ALINA_Line_Labeling">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#ML_Algorithm"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rule based line labeling with color thresholds and pixel traversal (Khan et al., 2024).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather_KS_Threshold">
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.32116666666666666</ml_t:has_tau>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#KS"/>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.37955555555555553</ml_t:has_tau_sev>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Unsafe_Output_Rate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Safety"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#applicable_to_algorithm_family">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://example.org/ml_core.owl#ML_Algorithm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Robustness_Debt">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Debt"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Correctness"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Security"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#EU_AI_Act">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Source_Document"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EU Artificial Intelligence Act, Regulation (EU) 2024/1689 (eu2024aiact)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Commissioning_Profile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Attack_Success_Rate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Security"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Problem_Context">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Taxiway_Imagery">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Operational_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_start_year">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Performance_Drift_Rate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Correctness"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Attack_Success_Rate_Threshold">
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Attack_Success_Rate"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.44861111111111107</ml_t:has_tau_sev>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.40555555555555556</ml_t:has_tau>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LLM_Version_Drift">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Performance_Metric"/>
+    <ml_t:of_metric_kind rdf:resource="http://example.org/ml_trust.owl#Performance_Drift_Rate"/>
+    <ml_c:measured_on rdf:resource="http://example.org/ml_trust.owl#Fixed_Benchmark_Tasks"/>
+    <ml_t:is_degraded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ml_t:is_degraded>
+    <ml_t:reported_in rdf:datatype="http://www.w3.org/2001/XMLSchema#string">chen2024chatgpt</ml_t:reported_in>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_task">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Hazard_Response_Time">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Safety"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Resilience"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#KS">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_t:supports_attribute_if_severe rdf:resource="http://example.org/ml_trust.owl#Resilience"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Training">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Training_Configuration"/>
+    <ml_t:has_start_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ml_t:has_start_year>
+    <ml_t:has_end_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</ml_t:has_end_year>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_random_seed">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#Hyperparameter_Configuration"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#AssistTaxi_Road_F1_Collapse">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Performance_Metric"/>
+    <ml_t:of_metric_kind rdf:resource="http://example.org/ml_trust.owl#F1_Score"/>
+    <ml_c:measured_on rdf:resource="http://example.org/ml_trust.owl#Road_Imagery_CULane"/>
+    <ml_t:is_degraded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ml_t:is_degraded>
+    <ml_t:reported_in rdf:datatype="http://www.w3.org/2001/XMLSchema#string">khan2025adapt</ml_t:reported_in>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Weather_Years_6_to_10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Operational_Context"/>
+    <ml_t:has_start_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</ml_t:has_start_year>
+    <ml_t:has_end_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</ml_t:has_end_year>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_trainable_parameters">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#implements_algorithm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdfs:range rdf:resource="http://example.org/ml_core.owl#ML_Algorithm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Latency_Variance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Predictability"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather_Prediction_Flip_Rate_Threshold">
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.09097222222222223</ml_t:has_tau_sev>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Prediction_Flip_Rate"/>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.07916666666666666</ml_t:has_tau>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Prediction_Flip_Rate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Predictability"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather_Profile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <ml_t:commissioned_on rdf:resource="http://example.org/ml_trust.owl#Weather_Years_6_to_10"/>
+    <ml_t:has_percentile rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">95</ml_t:has_percentile>
+    <ml_t:has_severe_percentile rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">99</ml_t:has_severe_percentile>
+    <ml_t:has_resample_size rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">200</ml_t:has_resample_size>
+    <ml_t:has_resample_size rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">400</ml_t:has_resample_size>
+    <ml_t:has_resample_size rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">800</ml_t:has_resample_size>
+    <ml_t:has_resample_size rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1600</ml_t:has_resample_size>
+    <ml_t:has_validation_years rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5000</ml_t:has_validation_years>
+    <ml_t:has_attack_epsilon rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</ml_t:has_attack_epsilon>
+    <ml_t:has_check_length_days rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">360</ml_t:has_check_length_days>
+    <ml_t:has_block_length_days rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</ml_t:has_block_length_days>
+    <ml_t:has_noise_sigma rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</ml_t:has_noise_sigma>
+    <ml_t:has_reference_size rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</ml_t:has_reference_size>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#LR_Weather_MMD_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#LR_Weather_F1_Score_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#LR_Weather_Unsafe_Output_Rate_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#LR_Weather_Accuracy_Variance_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#LR_Weather_Prediction_Flip_Rate_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#LR_Weather_Accuracy_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#LR_Weather_Attack_Success_Rate_Threshold"/>
+    <ml_t:has_threshold_entry rdf:resource="http://example.org/ml_trust.owl#LR_Weather_KS_Threshold"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Transparency_Interpretability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#NIST_AI_RMF"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#EASA_ML_Concept_Paper"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#EU_AI_Act"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Named in: NIST transparent, explainable, interpretable; EU AI Act transparency (Art. 13); EASA explainability</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Accuracy_Threshold">
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Accuracy"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.2451388888888889</ml_t:has_tau_sev>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.2270833333333333</ml_t:has_tau>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Safety">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#IEEE_7010"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#EU_AI_Act"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#EASA_ML_Concept_Paper"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#NIST_AI_RMF"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Named in: NIST safe; EU AI Act safety risks (Art. 9); EASA safety assessment; IEEE 7010 harm to well being</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb853affad2ee48a181baee4be4fff6d3">
+    <rdf:first rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdf:rest rdf:nodeID="N88196f6587ed4c0593336c64d603e368"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_percentile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Source_Target_Mismatch">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Debt"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Predictability"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Transparency_Interpretability"/>
+    <ml_t:requires_provenance rdf:resource="http://example.org/ml_trust.owl#Transfer_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_KS_Threshold">
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#KS"/>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.37955555555555553</ml_t:has_tau_sev>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.32116666666666666</ml_t:has_tau>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Fine_Tuning_Configuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#Training_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Explanation_Fidelity_Threshold">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.35635220198912076</ml_t:has_tau>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3950324784367373</ml_t:has_tau_sev>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Explanation_Fidelity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_block_length_days">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Prediction_Flip_Rate_Threshold">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.09583333333333333</ml_t:has_tau_sev>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.08333333333333333</ml_t:has_tau>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Prediction_Flip_Rate"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Predictability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#EASA_ML_Concept_Paper"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Named in: EASA stability of the trained model</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#ML_Algorithm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_hidden_units">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#Hyperparameter_Configuration"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc77c6279f65c4de79403c8c065f11712">
+    <rdf:first rdf:resource="http://example.org/ml_core.owl#ML_Algorithm"/>
+    <rdf:rest rdf:nodeID="N8c61e13fb38541fdb83424c89a6d91ae"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#ML_Metric">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Hyperparameter_Configuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#ALINA_Taxiway_Runway_Shift">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Shift_Metric"/>
+    <ml_t:of_metric_kind rdf:resource="http://example.org/ml_trust.owl#MMD"/>
+    <ml_c:measured_on rdf:resource="http://example.org/ml_trust.owl#Runway_Imagery"/>
+    <ml_t:is_degraded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ml_t:is_degraded>
+    <ml_t:reported_in rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ganeriwala2025runway</ml_t:reported_in>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#of_metric_kind">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+    <rdfs:range rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Explanation_Stability_Threshold">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Explanation_Stability"/>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.011041549868159778</ml_t:has_tau>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.011865876937117742</ml_t:has_tau_sev>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_check_length_days">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Road_to_Taxiway_Transfer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Transfer_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_attack_epsilon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#operates_on_context">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdfs:range rdf:resource="http://example.org/ml_core.owl#ML_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LLM_Prompt_Injection">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Robustness_Metric"/>
+    <ml_t:of_metric_kind rdf:resource="http://example.org/ml_trust.owl#Attack_Success_Rate"/>
+    <ml_c:measured_on rdf:resource="http://example.org/ml_trust.owl#Retrieved_Web_Content"/>
+    <ml_t:is_degraded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ml_t:is_degraded>
+    <ml_t:reported_in rdf:datatype="http://www.w3.org/2001/XMLSchema#string">greshake2023not</ml_t:reported_in>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#ML_Configuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#reported_in">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Large_Language_Model">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Deep_Learning_Algorithm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Supervised_Algorithm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Algorithm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#EASA_ML_Concept_Paper">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Source_Document"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EASA concept paper, first usable guidance for level 1 machine learning applications (easa2021concept)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_severe_percentile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#ALINA_Adjusted_Color_Sensitivity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Hyperparameter_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Lane_Detector_ResNet18">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Deep_Learning_Algorithm"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Supervised_Algorithm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#AssistTaxi_Lane_Detector">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <ml_c:implements_algorithm rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:suited_for_context rdf:resource="http://example.org/ml_trust.owl#Road_Imagery_CULane"/>
+    <ml_c:operates_on_context rdf:resource="http://example.org/ml_trust.owl#Taxiway_Imagery_AssistTaxi"/>
+    <ml_c:operates_on_context rdf:resource="http://example.org/ml_trust.owl#Road_Imagery_CULane"/>
+    <ml_c:has_configuration rdf:resource="http://example.org/ml_trust.owl#Road_to_Taxiway_Transfer"/>
+    <ml_c:has_configuration rdf:resource="http://example.org/ml_trust.owl#Head_Only_Fine_Tuning"/>
+    <ml_c:achieves_metric rdf:resource="http://example.org/ml_trust.owl#AssistTaxi_Road_F1_Collapse"/>
+    <ml_c:achieves_metric rdf:resource="http://example.org/ml_trust.owl#AssistTaxi_Road_Taxiway_Shift"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#derived_from">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdfs:range rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Mean_Time_To_Repair">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Resilience"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2e0efd74b97c4214880886baef12581a">
+    <rdf:first rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+    <rdf:rest rdf:nodeID="N7f5779e627d74eac8b370a20b05a3429"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Environment_Configuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb46353cd212f4e149b8f8692999e52c5">
+    <rdf:first rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <rdf:rest rdf:nodeID="N7b3a1e189bb844268c3c1b607c7ea5c5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_tau_sev">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather_Unsafe_Output_Rate_Threshold">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.6401354199842266</ml_t:has_tau>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Unsafe_Output_Rate"/>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.6848562282745101</ml_t:has_tau_sev>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Threshold_Entry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#ALINA_Runway_Mislabeling">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Performance_Metric"/>
+    <ml_t:of_metric_kind rdf:resource="http://example.org/ml_trust.owl#Accuracy"/>
+    <ml_c:measured_on rdf:resource="http://example.org/ml_trust.owl#Runway_Imagery"/>
+    <ml_t:is_degraded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ml_t:is_degraded>
+    <ml_t:reported_in rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ganeriwala2025runway</ml_t:reported_in>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_threshold_entry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdfs:range rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Data_Characteristics">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_inference_time_ms">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#IEEE_7010">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Source_Document"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IEEE 7010, assessing the impact of AI on human well being (schiff2020ieee)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Real_Time_Suitable_Model">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Shift_Metric">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Training_Configuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather_Attack_Success_Rate_Threshold">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.39236111111111105</ml_t:has_tau_sev>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3611111111111111</ml_t:has_tau>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Attack_Success_Rate"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Retrieved_Web_Content">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Operational_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Operating_Envelope">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Debt"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Reliability"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Resilience"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Accuracy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <ml_t:supports_attribute rdf:resource="http://example.org/ml_trust.owl#Correctness"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Lane_Detector_ResNet18"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Large_Language_Model"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Logistic_Regression"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#Multilayer_Perceptron"/>
+    <ml_c:applicable_to_algorithm_family rdf:resource="http://example.org/ml_trust.owl#ALINA_Line_Labeling"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_max_iterations">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#Hyperparameter_Configuration"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Performance_Metric">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#supports_attribute_if_severe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <rdfs:range rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_commissioning_profile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdfs:range rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather_Hyperparameters">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Hyperparameter_Configuration"/>
+    <ml_t:has_random_seed rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ml_t:has_random_seed>
+    <ml_t:has_max_iterations rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2000</ml_t:has_max_iterations>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Hyperparameters">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Hyperparameter_Configuration"/>
+    <ml_t:has_random_seed rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ml_t:has_random_seed>
+    <ml_t:has_max_iterations rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3000</ml_t:has_max_iterations>
+    <ml_t:has_hidden_units rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</ml_t:has_hidden_units>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Trustworthiness_Attribute">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Faithfulness">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Debt"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Predictability"/>
+    <ml_t:requires_attribute rdf:resource="http://example.org/ml_trust.owl#Transparency_Interpretability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#is_degraded">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#suited_for_context">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdfs:range rdf:resource="http://example.org/ml_core.owl#ML_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#supports_attribute">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+    <rdfs:range rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Unsafe_Output_Rate_Threshold">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5956960063147657</ml_t:has_tau>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.6411334735537232</ml_t:has_tau_sev>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Unsafe_Output_Rate"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Weather_Years_1_to_5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Operational_Context"/>
+    <ml_t:has_start_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ml_t:has_start_year>
+    <ml_t:has_end_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</ml_t:has_end_year>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_validation_years">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_Accuracy_Variance_Threshold">
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Accuracy_Variance"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.08966570211550043</ml_t:has_tau_sev>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0736019104235915</ml_t:has_tau>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Correctness">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#NIST_AI_RMF"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#EASA_ML_Concept_Paper"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#EU_AI_Act"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Named in: NIST valid; EU AI Act accuracy (Art. 15); EASA trained model performance</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Rain_Prediction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Problem_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Unsupervised_Algorithm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Algorithm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather_Accuracy_Variance_Threshold">
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#Accuracy_Variance"/>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.08931634612480757</ml_t:has_tau>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.10407812188190782</ml_t:has_tau_sev>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3ca01da4c49645e6a4ba7277666564ab">
+    <rdf:first rdf:resource="http://example.org/ml_trust.owl#Source_Document"/>
+    <rdf:rest rdf:nodeID="N5928c01c3bb740b7b2c930d7facb2577"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#for_metric_kind">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <rdfs:range rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#High_Accuracy_Model">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#has_noise_sigma">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Commissioning_Profile"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7b3a1e189bb844268c3c1b607c7ea5c5">
+    <rdf:first rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+    <rdf:rest rdf:nodeID="N3ca01da4c49645e6a4ba7277666564ab"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#named_in">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+    <rdfs:range rdf:resource="http://example.org/ml_trust.owl#Source_Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Source_Document">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#NOAA_Daily_Weather_Records">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Data_Characteristics"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Benign_Fine_Tuning">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Fine_Tuning_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N88196f6587ed4c0593336c64d603e368">
+    <rdf:first rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <rdf:rest rdf:nodeID="Nc77c6279f65c4de79403c8c065f11712"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Logistic_Regression">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Supervised_Algorithm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Harmful_Instruction_Prompts">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Problem_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#monitors_metric_kind">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdfs:range rdf:resource="http://example.org/ml_trust.owl#Raw_Metric_Kind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Reliability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Attribute"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#NIST_AI_RMF"/>
+    <ml_t:named_in rdf:resource="http://example.org/ml_trust.owl#EU_AI_Act"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Named in: NIST reliable; EU AI Act consistent performance (Art. 15)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Taxiway_Imagery_AssistTaxi">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Operational_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Deep_Learning_Algorithm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Algorithm"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N45f6a6fd81f841ab8d8210088f99772d">
+    <rdf:first rdf:resource="http://example.org/ml_core.owl#ML_Context"/>
+    <rdf:rest rdf:nodeID="N2e0efd74b97c4214880886baef12581a"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Explainability_Metric">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#ML_Context">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#LR_Weather_MMD_Threshold">
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.11308261469792971</ml_t:has_tau_sev>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0689808895357363</ml_t:has_tau>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#MMD"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#MLP_Weather_F1_Score_Threshold">
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Threshold_Entry"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ml_t:has_tau rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.48153926786002255</ml_t:has_tau>
+    <ml_t:has_tau_sev rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.526785728920495</ml_t:has_tau_sev>
+    <ml_t:for_metric_kind rdf:resource="http://example.org/ml_trust.owl#F1_Score"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Weather_Years_11_to_50">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Operational_Context"/>
+    <ml_t:has_start_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</ml_t:has_start_year>
+    <ml_t:has_end_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</ml_t:has_end_year>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Reinforcement_Learning_Algorithm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Algorithm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Head_Only_Fine_Tuning">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_trust.owl#Fine_Tuning_Configuration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Raw_Metric_Kind">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Runway_Imagery">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Operational_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N5928c01c3bb740b7b2c930d7facb2577">
+    <rdf:first rdf:resource="http://example.org/ml_trust.owl#Trustworthiness_Debt"/>
+    <rdf:rest rdf:nodeID="Nb853affad2ee48a181baee4be4fff6d3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Operational_Context">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Efficiency_Metric">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#Road_Imagery_CULane">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/ml_core.owl#Operational_Context"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_core.owl#Robustness_Metric">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/ml_core.owl#ML_Metric"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7f5779e627d74eac8b370a20b05a3429">
+    <rdf:first rdf:resource="http://example.org/ml_core.owl#ML_Model_Instance"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8c61e13fb38541fdb83424c89a6d91ae">
+    <rdf:first rdf:resource="http://example.org/ml_core.owl#ML_Configuration"/>
+    <rdf:rest rdf:nodeID="N45f6a6fd81f841ab8d8210088f99772d"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ml_trust.owl#requires_provenance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/trustworthiness_debt.owl">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+</rdf:RDF>

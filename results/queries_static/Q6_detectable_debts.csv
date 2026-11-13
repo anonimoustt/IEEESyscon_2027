@@ -1,0 +1,11 @@
+model,debt
+LR_Weather,Capability_Loss
+LR_Weather,Harmful_Output
+LR_Weather,Operating_Envelope
+LR_Weather,Robustness_Debt
+MLP_Weather,Capability_Loss
+MLP_Weather,Faithfulness
+MLP_Weather,Harmful_Output
+MLP_Weather,Operating_Envelope
+MLP_Weather,Robustness_Debt
+MLP_Weather,Source_Target_Mismatch

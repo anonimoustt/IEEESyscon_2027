@@ -1,0 +1,15 @@
+metric,attribute,link
+Accuracy,Correctness,direct
+Accuracy_Variance,Correctness,direct
+Accuracy_Variance,Reliability,direct
+Attack_Success_Rate,Security,direct
+Explanation_Fidelity,Transparency_Interpretability,direct
+Explanation_Stability,Predictability,direct
+Explanation_Stability,Transparency_Interpretability,direct
+F1_Score,Correctness,direct
+KS,Reliability,direct
+KS,Resilience,severe shift only
+MMD,Reliability,direct
+MMD,Resilience,severe shift only
+Prediction_Flip_Rate,Predictability,direct
+Unsafe_Output_Rate,Safety,direct

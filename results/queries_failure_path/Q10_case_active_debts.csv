@@ -1,0 +1,6 @@
+model,debt,support
+AssistTaxi_Lane_Detector,Capability_Loss,2
+Language_Model_Composite,Capability_Loss,1
+Language_Model_Composite,Harmful_Output,2
+Language_Model_Composite,Robustness_Debt,2
+MLP_Weather,Robustness_Debt,2

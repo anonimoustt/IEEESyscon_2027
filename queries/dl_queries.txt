@@ -1,0 +1,22 @@
+# DL queries for the Protégé DL Query tab (Manchester syntax). Start a reasoner (HermiT) and tick Instances.
+
+# D1. Expected instances: Accuracy, Accuracy_Variance, Attack_Success_Rate, Explanation_Fidelity, Explanation_Stability, F1_Score, KS, MMD, Prediction_Flip_Rate, Unsafe_Output_Rate
+Raw_Metric_Kind and inverse (monitors_metric_kind) value MLP_Weather
+
+# D2. Expected instances: Correctness, Predictability, Reliability, Safety, Security
+Trustworthiness_Attribute and inverse (supports_attribute) some (Raw_Metric_Kind and inverse (monitors_metric_kind) value LR_Weather and applicable_to_algorithm_family value Logistic_Regression)
+
+# D3. Expected instances: AssistTaxi_Lane_Detector, Language_Model_Composite, MLP_Weather
+ML_Model_Instance and implements_algorithm some Deep_Learning_Algorithm
+
+# D4. Expected instances: AssistTaxi_Lane_Detector, Language_Model_Composite
+ML_Model_Instance and has_configuration some Fine_Tuning_Configuration
+
+# D5. Expected instances: ALINA_on_Runways, AssistTaxi_Lane_Detector
+ML_Model_Instance and has_configuration some Transfer_Configuration
+
+# D6. Expected instances: Capability_Loss, Robustness_Debt
+Trustworthiness_Debt and requires_attribute value Correctness
+
+# D7. Expected instances: ALINA_on_Runways, AssistTaxi_Lane_Detector
+ML_Model_Instance and achieves_metric some (is_degraded value true and of_metric_kind value MMD)

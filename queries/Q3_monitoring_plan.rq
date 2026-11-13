@@ -1,0 +1,13 @@
+# Q3. Monitoring plan: metric kinds the model monitors that apply to its algorithm, and the attributes each supports.
+PREFIX c: <http://example.org/ml_core.owl#>                                                   # core namespace
+PREFIX t: <http://example.org/ml_trust.owl#>                                                  # extension namespace
+SELECT ?metric ?attribute ?link WHERE {                                                       # three output columns
+  VALUES ?model { t:MLP_Weather }                                                             # the model; change this name for another model
+  ?model t:monitors_metric_kind ?metric ;                                                     # metric kinds it monitors
+         c:implements_algorithm ?algorithm .                                                  # and its algorithm
+  ?metric c:applicable_to_algorithm_family ?algorithm .                                       # keep kinds that apply to that algorithm
+  { ?metric t:supports_attribute ?attribute . BIND("direct" AS ?link) }                       # direct metric to attribute links
+  UNION                                                                                       # or
+  { ?metric t:supports_attribute_if_severe ?attribute . BIND("severe shift only" AS ?link) }  # links that hold only under a severe shift
+}                                                                                             # end of the pattern
+ORDER BY ?metric ?attribute                                                                   # sorted output

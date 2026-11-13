@@ -1,0 +1,22 @@
+# Q2. Monitoring settings of one model: algorithm, hyperparameters, periods, task, size, and threshold settings.
+PREFIX c: <http://example.org/ml_core.owl#>                                                                # core namespace
+PREFIX t: <http://example.org/ml_trust.owl#>                                                               # extension namespace
+SELECT ?algorithm ?seed ?hiddenUnits ?maxIter ?trainFrom ?trainTo ?commFrom ?commTo ?opFrom ?opTo          # output columns
+       ?task ?parameters ?checkDays ?blockDays ?validationYears ?epsilon ?pct ?pctSevere ?sigma ?refSize   # output columns, continued
+       (GROUP_CONCAT(STR(?size); separator=",") AS ?resampleSizes) WHERE {                                 # threshold run sizes in one cell
+  VALUES ?model { t:MLP_Weather }                                                                          # the model to describe; change this name for another model
+  ?model c:implements_algorithm ?algorithm ; c:has_configuration ?hyp, ?trn ;                              # algorithm and configurations
+         c:operates_on_context ?op ; t:has_commissioning_profile ?prof ;                                   # operating context and threshold profile
+         t:has_task ?task ; t:has_trainable_parameters ?parameters .                                       # task and number of trainable parameters
+  ?hyp a c:Hyperparameter_Configuration ; t:has_random_seed ?seed ; t:has_max_iterations ?maxIter .        # hyperparameters
+  OPTIONAL { ?hyp t:has_hidden_units ?hiddenUnits . }                                                      # hidden units exist only for networks
+  ?trn a c:Training_Configuration ; t:has_start_year ?trainFrom ; t:has_end_year ?trainTo .                # training years
+  ?op t:has_start_year ?opFrom ; t:has_end_year ?opTo .                                                    # operating years
+  ?prof t:commissioned_on ?cm ; t:has_check_length_days ?checkDays ; t:has_block_length_days ?blockDays ;  # normal period, year length, month length
+        t:has_resample_size ?size ; t:has_validation_years ?validationYears ; t:has_attack_epsilon ?epsilon ; # resampled years and attack size
+        t:has_percentile ?pct ; t:has_severe_percentile ?pctSevere ;                                       # percentiles
+        t:has_noise_sigma ?sigma ; t:has_reference_size ?refSize .                                         # noise level and reference size
+  ?cm t:has_start_year ?commFrom ; t:has_end_year ?commTo .                                                # normal operation years
+}                                                                                                          # end of the pattern
+GROUP BY ?algorithm ?seed ?hiddenUnits ?maxIter ?trainFrom ?trainTo ?commFrom ?commTo ?opFrom ?opTo        # one row per model
+         ?task ?parameters ?checkDays ?blockDays ?validationYears ?epsilon ?pct ?pctSevere ?sigma ?refSize # grouping, continued
