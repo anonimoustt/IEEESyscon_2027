@@ -56,7 +56,7 @@ The pipeline has five steps. Steps 1 and 2 build the trustworthiness knowledge o
 | `paper_numbers.py` | computes every number of the weather experiment (Section IV of the paper) |
 | `clean_rates_example.py` | recomputes the validation rates of Section IV.F for either model from the 5,000 validation years (`python code/clean_rates_example.py . LR_Weather`) |
 | `failure_path.py` | writes the record of one monitored year (default year 21 of `MLP_Weather`) into a copy of the ontology, so the failure path can be followed in Protégé; the static ontology is not changed |
-| `make_chain_view.py` | keeps only the links that Q12 matches for one year and one debt, so OntoGraf in Protégé draws the failure path as a chain (Fig. 3 of the paper) |
+| `make_chain_view.py` | keeps only the links that Q12 (Q3 in the paper) matches for one year and one debt, so OntoGraf in Protégé draws the failure path as a chain (Fig. 3 of the paper) |
 | `split_sensitivity.py` | repeats the experiment with other training, normal, and monitored years (Section IV.E of the paper, *Other splits*) and writes `results/split_sensitivity.json` (`python code/split_sensitivity.py`) |
 | `worked_example.py` | shows the first resampled year, the thresholds of the four runs and their average (Section IV.D), and how year 31 of `MLP_Weather` is judged step by step (`python code/worked_example.py`) |
 
@@ -146,6 +146,16 @@ What the test shows:
 The file `results/split_sensitivity.json` holds every run: the year sets, the training accuracy, the accuracy and KS thresholds, the validation rates, the debt years, and the count of each debt.
 
 ## Get model information from the ontology
+
+The repository holds twelve SPARQL queries, Q1 to Q12. The paper presents three of them and numbers them Q1 to Q3. The other nine are documented only here, under "Expected answers".
+
+| In the paper | In this repository | Question |
+|---|---|---|
+| Q1 | Q5 (`Q5_blind_spots.rq`) | Which attributes of a model does no applicable metric measure? |
+| Q2 | Q6 (`Q6_detectable_debts.rq`) | Which debts have all their attributes visible to the model? |
+| Q3 | Q12 (`Q12_failure_path.rq`) | For one monitored year, which degraded metric reaches which attribute and which debt? |
+
+All query numbers below are the numbers of this repository.
 
 ### In Python
 
