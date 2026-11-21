@@ -1,4 +1,4 @@
-# Recomputes the validation rates of Section IV.F (27.5% and 2.9% for MLP_Weather, 20.3% and 2.3% for LR_Weather)
+# Recomputes the validation rates of Section IV.C (27.5% and 2.9% for MLP_Weather, 20.3% and 2.3% for LR_Weather)
 # from the metric values of the 5,000 validation years and the averaged thresholds, with the debt rule typed in.
 # Usage: python clean_rates_example.py [REPO_DIR or -] [MLP_Weather or LR_Weather]   (- reads the files from GitHub)
 import csv  # validation years

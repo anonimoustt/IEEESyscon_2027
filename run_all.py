@@ -35,7 +35,7 @@ STEPS = [  # (description, command)
                                                          os.path.join("ontology", "failure_path_MLP_Weather_year21.owl"),  # demo file
                                                          "queries", "results/queries_failure_path"]),  # output folder
     ("draw the figure of the 40 monitored years", [PY, "code/fig_weather.py", MON, "results/queries_static", os.path.join(FIG, "weather.pdf")]),  # figure
-    ("draw Fig. 4 and Fig. 5 of the paper", [PY, "code/time_figures.py", MON, FIG]),  # KS and accuracy over time
+    ("draw Fig. 4 of the paper", [PY, "code/oe_figure.py", MON, FIG]),  # MMD, KS, and accuracy over time
     ("compute the numbers of Section IV", [PY, "code/paper_numbers.py", MON, "results/paper_numbers.json", DATA]),  # numbers
 ]  # end of the step list
 

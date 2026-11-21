@@ -1,4 +1,4 @@
-# Computes every weather number quoted in Section IV of the paper (Section IV) from the monitor outputs.
+# Computes every weather number quoted in Section IV of the paper from the monitor outputs.
 # Usage: python paper_numbers.py MONITOR_DIR OUT_JSON [DATA_DIR]
 import csv  # monitor tables
 import json  # summaries and output
@@ -8,7 +8,7 @@ import sys  # command line arguments
 MON, OUT = sys.argv[1:3]  # inputs and output
 DATA = sys.argv[3] if len(sys.argv) > 3 else None  # weather data folder (optional)
 DECADES = [(11, 20), (21, 30), (31, 40), (41, 50)]  # four blocks of ten monitored years
-SHOW = [17, 21, 31, 37]  # years discussed in Section IV.E
+SHOW = [21, 49, 50]  # years discussed in Section IV.C
 GOOD_IS_HIGH = {"Accuracy", "F1_Score"}  # shown as scores, degraded when below the threshold
 
 
@@ -26,6 +26,11 @@ for M in ("MLP_Weather", "LR_Weather"):  # both catalog models
     has_debt = lambda r: any(r[d] == "detected" for d in debts)  # a debt was detected
     pct = lambda n: round(100.0 * n / len(val), 1)  # percent of validation years
     D = [int(r["year"]) for r in yrs if has_debt(r)]  # years with a detected debt
+    loose = lambda r: any(r[d] in ("detected", "one_metric_only") for d in debts)  # all attributes, one metric allowed
+    faith = [r for r in val if r["Faithfulness"] == "one_metric_only"]  # Faithfulness from one metric
+    acc = lambda r: 100 * (1 - float(r["v_Accuracy"]))  # accuracy in %
+    ks_max = max(float(r["v_KS"]) for r in val)  # largest KS of the validation years
+    oe = [r for r in yrs if r["Operating_Envelope"] == "detected"]  # Operating Envelope years
     debt_years[M] = set(D)  # keep for the comparison
     v = s["validation"]  # validation counts
     res[M] = {  # numbers of this model
@@ -37,8 +42,12 @@ for M in ("MLP_Weather", "LR_Weather"):  # both catalog models
         "thresholds_avg": {m: round(shown(m, s["thresholds"][m][0]), 4) for m in plan},  # averaged thresholds
         "severe_avg": {m: round(s["thresholds"][m][1], 4) for m in ("MMD", "KS")},  # averaged severe levels
         "validation_pct": {m: pct(v["metric_degraded"][m]) for m in plan},  # per metric, expected near 5
-        "validation_any_one_pct": pct(v["any_one_metric"]),  # one or more metrics
-        "validation_any_two_pct": pct(v["any_two_metrics"]),  # two or more, related or not
+        "validation_any_one_pct": pct(v["any_one_metric"]), "validation_any_one_n": v["any_one_metric"],  # single metric monitor
+        "validation_any_two_pct": pct(v["any_two_metrics"]), "validation_any_two_n": v["any_two_metrics"],  # two metric monitor
+        "validation_one_metric_allowed_pct": pct(sum(map(loose, val))),  # Table V, third row
+        "validation_one_metric_allowed_n": sum(map(loose, val)),  # its count
+        "validation_faithfulness_one_metric": len(faith),  # explanation stability alone
+        "validation_faithfulness_one_metric_no_debt": sum(not has_debt(r) for r in faith),  # no other debt
         "validation_debt_pct": pct(v["any_debt_detected"]), "validation_debt_n": v["any_debt_detected"],  # debt rule
         "validation_debts": v["debt"], "validation_ruled_out": v["ruled_out"],  # per debt
         "validation_severe_pct": pct(v["attribute_degraded"]["Resilience"]),  # severe shift of MMD or KS
@@ -52,7 +61,12 @@ for M in ("MLP_Weather", "LR_Weather"):  # both catalog models
         "ks_only_years": [int(r["year"]) for r in yrs if n_deg(r) == 1 and r["deg_KS"] == "1"],  # KS alone
         "decade_debts": {"%d-%d" % (a, b): sum(a <= t <= b for t in D) for a, b in DECADES},  # per decade
         "mean_accuracy_pct": round(sum(100 * (1 - float(r["v_Accuracy"])) for r in yrs) / len(yrs), 1),  # 40 years
-        "example_years": {r["year"]: {"values": {m: round(shown(m, float(r["v_" + m])), 4) for m in plan},  # Section IV.E
+        "discussion": {"ks_validation_max": round(ks_max, 3),  # Section IV.D, second fact
+                       "oe_years": len(oe),  # Operating Envelope years
+                       "oe_years_ks_above_validation_max": [int(r["year"]) for r in oe if float(r["v_KS"]) > ks_max],  # beyond normal
+                       "oe_mean_accuracy_pct": round(sum(map(acc, oe)) / len(oe), 1),  # third fact
+                       "validation_mean_accuracy_pct": round(sum(map(acc, val)) / len(val), 1)},  # normal average
+        "example_years": {r["year"]: {"values": {m: round(shown(m, float(r["v_" + m])), 4) for m in plan},  # Section IV.C
                                       "degraded": [m for m in plan if r["deg_" + m] == "1"],  # degraded metrics
                                       "attributes": [a for a in s["monitoring"]["attribute_degraded"] if r[a] == "1"],  # attributes
                                       "debts": {d: r[d] for d in debts if r[d] != "none"}, "ruled_out": r["ruled_out"]}  # debts

@@ -1,10 +1,10 @@
-# Model Specific Trustworthiness Debt in Learning Enabled Systems Using an Ontology
+# Evaluating Trustworthiness Debt of Specific Machine Learning Models in Learning Enabled Systems Using an Ontology
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anonimoustt/IEEESyscon_2027/blob/main/colab_demo.ipynb) the whole study in one run
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anonimoustt/IEEESyscon_2027/blob/main/syscon2027_experiment_walkthrough.ipynb) the experiment step by step, with every number checked against the paper
 
-Code, ontology, and queries for the paper *Model Specific Trustworthiness Debt in Learning Enabled Systems Using an Ontology*, submitted to the IEEE International Systems Conference (SysCon) 2027.
+Code, ontology, and queries for the paper *Evaluating Trustworthiness Debt of Specific Machine Learning Models in Learning Enabled Systems Using an Ontology*, submitted to the IEEE International Systems Conference (SysCon) 2027.
 
 Trustworthiness debt is a joint deficit that arises when several trustworthiness attributes of a deployed machine learning (ML) model degrade together. The paper shows that one metric observed over time is not sufficient to detect and explain a failure, while two or more related metrics read together are.
 
@@ -29,7 +29,7 @@ The pipeline has five steps. Steps 1 and 2 build the trustworthiness knowledge o
 | Path | Content |
 |---|---|
 | `colab_demo.ipynb` | the whole study in one notebook, ready for Google Colab |
-| `syscon2027_experiment_walkthrough.ipynb` | Section IV step by step: data, ontology queries, metrics, resampled years, thresholds, validation, monitoring, and a final check of 14 numbers against the paper |
+| `syscon2027_experiment_walkthrough.ipynb` | Section IV step by step: data, ontology queries, metrics, resampled years, thresholds, validation, monitoring, and a final check of 26 numbers against the paper |
 | `data/noaa_weather_offutt_1949_1999.csv` | the two public weather files joined row by row, with column names |
 | `run_all.py` | reproduces every result in about ten minutes, except the test of other splits, which runs on its own (see *Test of other splits*) |
 | `code/` | all scripts; every line is commented |
@@ -52,13 +52,14 @@ The pipeline has five steps. Steps 1 and 2 build the trustworthiness knowledge o
 | `weather_debt_check.py` | independent check: recomputes all metric values, thresholds, and decisions without the ontology (library routines where possible) and compares them with the monitor |
 | `ontology_monitor.py` | the monitor: model information, metrics, links, debts, and history come from the ontology; it sets the thresholds, validates them, writes them back, and monitors years 11 to 50 |
 | `fig_weather.py` | draws a figure of the 40 monitored years of both models |
-| `time_figures.py` | draws Fig. 4 (KS over time) and Fig. 5 (accuracy over time) of the paper |
-| `paper_numbers.py` | computes every number of the weather experiment (Section IV of the paper) |
-| `clean_rates_example.py` | recomputes the validation rates of Section IV.F for either model from the 5,000 validation years (`python code/clean_rates_example.py . LR_Weather`) |
+| `oe_figure.py` | draws Fig. 4 of the paper: MMD, KS, and accuracy of MLP_Weather over the 40 monitored years |
+| `time_figures.py` | draws KS and accuracy over time as separate plots (earlier version of Fig. 4) |
+| `paper_numbers.py` | computes every number of the weather experiment (Section IV of the paper), including the three facts of the Discussion |
+| `clean_rates_example.py` | recomputes the validation rates of Section IV.C for either model from the 5,000 validation years (`python code/clean_rates_example.py . LR_Weather`) |
 | `failure_path.py` | writes the record of one monitored year (default year 21 of `MLP_Weather`) into a copy of the ontology, so the failure path can be followed in Protégé; the static ontology is not changed |
 | `make_chain_view.py` | keeps only the links that Q12 (Q3 in the paper) matches for one year and one debt, so OntoGraf in Protégé draws the failure path as a chain (Fig. 3 of the paper) |
-| `split_sensitivity.py` | repeats the experiment with other training, normal, and monitored years (Section IV.E of the paper, *Other splits*) and writes `results/split_sensitivity.json` (`python code/split_sensitivity.py`) |
-| `worked_example.py` | shows the first resampled year, the thresholds of the four runs and their average (Section IV.D), and how year 31 of `MLP_Weather` is judged step by step (`python code/worked_example.py`) |
+| `split_sensitivity.py` | repeats the experiment with other training, normal, and monitored years (an extra check, not reported in the paper) and writes `results/split_sensitivity.json` (`python code/split_sensitivity.py`) |
+| `worked_example.py` | shows the first resampled year, the thresholds of the four runs and their average (Section IV.B), and how year 31 of `MLP_Weather` is judged step by step (`python code/worked_example.py`) |
 
 ## Quick start on Google Colab
 
@@ -100,8 +101,8 @@ Use Owlready2 0.48. Version 0.51 ships a reasoner jar built for Java 25.
 | 10. record of year 21 for Protégé | `ontology/failure_path_MLP_Weather_year21.owl` |
 | 11. SPARQL queries on the record of year 21 | `results/queries_failure_path/` (Q12 lists the failure path) |
 | 12. figure | `results/figures/weather.pdf` and `.png` |
-| 13. Fig. 4 and Fig. 5 of the paper | `results/figures/ks_over_time.pdf` and `accuracy_over_time.pdf` |
-| 14. numbers of Section IV | `results/paper_numbers.json` |
+| 13. Fig. 4 of the paper | `results/figures/oe_detection.pdf` |
+| 14. numbers of Section IV, including the Discussion | `results/paper_numbers.json` |
 
 Expected agreement (in `results/monitor/cross_check_*.json`): `"decision_mismatches": 0` for both models, over 5,040 years (5,000 validation years and 40 monitored years), with metric values equal up to rounding (largest relative gap about 1e-13).
 
@@ -115,7 +116,7 @@ Expected agreement (in `results/monitor/cross_check_*.json`): `"decision_mismatc
 
 ## Test of other splits
 
-The paper trains on years 1 to 5, takes its thresholds from years 6 to 10, and monitors years 11 to 50. `code/split_sensitivity.py` repeats the experiment with other year sets (Section IV.E of the paper, *Other splits*). The method stays the same; only the years change. The script does not read the ontology, is not part of `run_all.py`, and changes no other result.
+The paper trains on years 1 to 5, takes its thresholds from years 6 to 10, and monitors years 11 to 50. `code/split_sensitivity.py` repeats the experiment with other year sets. This extra check is not reported in the paper. The method stays the same; only the years change. The script does not read the ontology, is not part of `run_all.py`, and changes no other result.
 
 ```
 python code/split_sensitivity.py     # about four minutes; writes results/split_sensitivity.json

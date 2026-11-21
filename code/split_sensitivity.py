@@ -1,4 +1,4 @@
-# Test of other splits (Section IV.E, Other splits): repeats the experiment with other training, normal, and monitored years.
+# Test of other splits (an extra check, not reported in the paper): repeats the experiment with other training, normal, and monitored years.
 # The method is that of ontology_monitor.py; only the year sets below change. The first split is the one of the paper.
 # Usage: python code/split_sensitivity.py [DATA_CSV [OUT_JSON [CONFIG ...]]]   (defaults: the joined data file, results/split_sensitivity.json)
 import json  # results file
